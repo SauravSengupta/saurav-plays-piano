@@ -1,43 +1,21 @@
 ---
 title: About
 seo:
-  title: About Me
-  description: Learn more about the person behind the website and embark on a journey of inspiration and shared experiences.
+  title: The Story Behind the Music | Saurav Plays Piano
+  description: Exploring the intersection of minimalist piano, cinematic soundscapes, and the quiet stillness of nature.
   image:
     src: '../../assets/images/about.jpg'
-    alt: A person sitting at a desk in front of a computer
+    alt: A closeup of a piano keyboard
 ---
 
-![Alt text for image](../../assets/images/about.jpg)
+![Ambient relaxing piano](../../assets/images/about.jpg)
 
-**Note!:** This about page is entirely fictional and created for the purpose of showcasing [Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/).
+## My musical journey
 
-## Ethan Donovan - Web Developer based in Estonia
+I'm Saurav, and my day job is in software development. My musical journey started with Indian classical music, transitioned through rock in high school and college, and after moving to the U.S, European classical and a bit of blues / jazz. I've returned to the piano after a break (life, kids), and I'm exploring a new creative path composing relaxing ambient piano music.
 
-**Greetings!** I'm Ethan Donovan, a passionate web developer residing in the picturesque landscapes of [Estonia](https://en.wikipedia.org/wiki/Estonia). With a keen eye for design and a love for crafting seamless digital experiences, I bring a unique blend of creativity and technical expertise to the world of web development.
+Having lived in the Pacific Northwest for over 20 years now, I have come to appreciate the beauty of cloudy foggy mornings. My debut release, **Mist & Mushrooms**, tries to capture the feeling of a walk through the Oregon woods.
 
-## Skills and Expertise
+## Behind the scenes
 
-I specialize in front-end and back-end development, utilizing the latest technologies to build responsive and user-friendly websites. My proficiency includes **HTML**, **CSS**, **JavaScript**, and frameworks such as **Astro.js** for dynamic and interactive user interfaces. On the server side, I'm well-versed in Node.js and have experience with database management systems like MongoDB.
-
-## Innovation and Problem-Solving
-
-I thrive on solving complex problems and transforming ideas into functional, elegant websites. Whether it's optimizing performance, implementing new features, or troubleshooting issues, I approach each challenge with enthusiasm and a commitment to delivering high-quality solutions.
-
-## Global Perspective, Local Impact
-
-Living in Estonia has not only influenced my appreciation for nature and culture but has also shaped my approach to web development. I understand the importance of creating digital solutions that resonate with local audiences while maintaining a global perspective.
-
-## Continuous Learning
-
-The dynamic nature of the tech industry inspires me to stay up-to-date with the latest trends and advancements. I'm always eager to expand my skill set and embrace emerging technologies that enhance the functionality and aesthetics of the websites I create.
-
-## Collaboration and Communication
-
-I believe in the power of collaboration and effective communication. Whether working with clients, designers, or fellow developers, I value clear communication to ensure the success of every project.
-
-## Get in Touch
-
-Are you looking to elevate your online presence or bring your digital ideas to life? I'd love to hear from you! Feel free to reach out for collaboration, consultation, or just a friendly chat about all things web development.
-
-_Let's build something amazing together!_
+I play the piano portions on a Kawai Novus NV10. I've owned a lot of digital pianos over the years, and as my teacher said, this was the first one where I wasn't complaining about it within a few months. It has a beautiful grand piano action, and an expressive sound engine that does not get repetitive. With that said, I no longer use the Kawai sounds in my recordings. I bring the MIDI into Reaper, where my go-to VST is Pianoteq, usually a felted preset on the Bösendorfer. Sometimes I will add strings, nature sounds, or other tracks, which are layered in Reaper.

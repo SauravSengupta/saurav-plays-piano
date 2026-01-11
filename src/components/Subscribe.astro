@@ -42,3 +42,41 @@ if (!subscribe?.enabled || !subscribe?.form?.action) {
         <Button type="submit" class="h-9 w-full sm:w-auto">Subscribe</Button>
     </form>
 </section>
+<script>
+  const form = document.getElementById('subscribe-form') as HTMLFormElement;
+  const button = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Stop the browser from redirecting to the ugly JSON page
+      
+      // visual feedback
+      if (button) {
+          button.disabled = true;
+          button.innerText = 'Joining...';
+      }
+
+      const formData = new FormData(form);
+
+      try {
+        // Send data silently using 'no-cors' mode (Fire and Forget)
+        await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors' 
+        });
+
+        // Show Success Message
+        form.innerHTML = `
+          <div class="py-4 text-center">
+            <p class="text-xl font-serif text-main">Welcome to the Saurav Plays Piano mailing list.</p>
+            <p class="text-sm mt-2 opacity-80">Check your inbox to confirm your subscription.</p>
+          </div>
+        `;
+      } catch (err) {
+        // Fallback: If JS fails, submit the form normally
+        form.submit();
+      }
+    });
+  }
+</script>

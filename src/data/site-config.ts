@@ -3,17 +3,17 @@ import hero from '../assets/images/hero.jpg';
 import type { SiteConfig } from '../types';
 
 const siteConfig: SiteConfig = {
-    website: 'https://example.com',
+    website: 'https://sauravplayspiano.com',
     avatar: {
         src: avatar,
-        alt: 'Ethan Donovan'
+        alt: 'Saurav Plays Piano'
     },
-    title: 'Dante',
-    subtitle: 'Minimal Astro.js theme',
-    description: 'Astro.js and Tailwind CSS theme for blog and portfolio by justgoodui.com',
+    title: 'Saurav Plays Piano',
+    subtitle: 'Relaxing Ambient Piano Music',
+    description: 'Cinematic and relaxing ambient piano music by Saurav',
     image: {
-        src: '/dante-preview.jpg',
-        alt: 'Dante - Astro.js and Tailwind CSS theme'
+        src: '/social-preview.jpg',
+        alt: 'Saurav Plays Piano - Cinematic and relaxing ambient piano music by Saurav'
     },
     headerNavLinks: [
         {
@@ -21,70 +21,71 @@ const siteConfig: SiteConfig = {
             href: '/'
         },
         {
-            text: 'Projects',
-            href: '/projects'
+            text: 'Music',
+            href: '/music'
         },
-        {
-            text: 'Blog',
-            href: '/blog'
-        },
-        {
-            text: 'Tags',
-            href: '/tags'
-        }
-    ],
-    footerNavLinks: [
         {
             text: 'About',
             href: '/about'
         },
         {
-            text: 'Contact',
-            href: '/contact'
+            text: 'Connect',
+            href: '/connect'
         },
+        /*
+                {
+                    text: 'Blog',
+                    href: '/blog'
+                },
+                {
+                    text: 'Tags',
+                    href: '/tags'
+                }
+        */
+    ],
+    footerNavLinks: [
         {
             text: 'Terms',
             href: '/terms'
-        },
-        {
-            text: 'Download theme',
-            href: 'https://github.com/JustGoodUI/dante-astro-theme'
         }
     ],
     socialLinks: [
         {
-            text: 'Dribbble',
-            href: 'https://dribbble.com/'
+            text: 'YouTube',
+            href: 'https://www.youtube.com/@SauravPlaysPiano'
         },
         {
             text: 'Instagram',
-            href: 'https://instagram.com/'
-        },
-        {
-            text: 'X/Twitter',
-            href: 'https://twitter.com/'
+            href: 'https://www.instagram.com/sauravplayspiano/'
         }
     ],
     hero: {
-        title: 'Hi There & Welcome to My Corner of the Web!',
-        text: "I'm **Ethan Donovan**, a web developer at Amazing Studio, dedicated to the realms of collaboration and artificial intelligence.\nMy approach involves embracing intuition, conducting just enough research, and leveraging aesthetics as a catalyst for exceptional products.\nI have a profound appreciation for top-notch software, visual design, and the principles of product-led growth.\n\nFeel free to explore some of my coding endeavors on [GitHub](https://github.com/JustGoodUI/dante-astro-theme) or follow me on [Twitter/X](https://twitter.com/justgoodui).",
+        title: 'Music for quiet moments',
+        text: "Minimalist piano compositions inspired by the misty Pacific Northwest.",
         image: {
             src: hero,
-            alt: 'A person sitting at a desk in front of a computer'
+            alt: 'A cinematic shot of a misty evergreen forest'
         },
         actions: [
             {
-                text: 'Get in Touch',
-                href: '/contact'
+                text: 'Mist & Mushrooms - my debut track',
+                href: '/music/mist-and-mushrooms'
             }
         ]
     },
     subscribe: {
         enabled: true,
-        title: 'Subscribe to Dante Newsletter',
-        text: 'One update per week. All the latest posts directly in your inbox.',
+        title: 'Join my mailing list',
+        text: 'No spam, I promise. Only updates when I have something new to share. You can unsubscribe at any time.',
         form: {
-            action: '#'
+            action: 'https://assets.mailerlite.com/jsonp/2030410/forms/176325572793730648/subscribe',
+            emailFieldName: 'fields[email]',
+            // MailerLite uses "anticsrf" as a basic bot check
+            honeypotFieldName: 'anticsrf',
+            // This matches the <input type="hidden" name="ml-submit" value="1"> in your code
+            hiddenFields: [
+                { name: 'ml-submit', value: '1' }
+            ]
         }
     },
     postsPerPage: 8,

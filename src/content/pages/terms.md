@@ -2,12 +2,12 @@
 title: Terms of Service
 seo:
   title: Terms of Service
-  description: Explore the terms and conditions of Dante website for a clear understanding of guidelines and responsibilities.
+  description: Explore the terms and conditions of Saurav Plays Piano website for a clear understanding of guidelines and responsibilities.
 ---
 
-**Last updated on January 11, 2024**
+**Last updated on January 11, 2026**
 
-These Terms of Service ("Terms") govern your access to and use of [Website Name] ("the Website") and any related services provided by [Website Owner/Company] ("we," "us," or "our"). Please read these Terms carefully before using the Website.
+These Terms of Service ("Terms") govern your access to and use of sauravplayspiano.com ("the Website") and any related services provided by Saurav Plays Piano ("we," "us," or "our"). Please read these Terms carefully before using the Website.
 
 **1. Acceptance of Terms**
 
@@ -47,6 +47,6 @@ To the fullest extent permitted by law, we shall not be liable for any direct, i
 
 **10. Governing Law**
 
-These Terms are governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of laws principles. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts of [Your Jurisdiction].
+These Terms are governed by and construed in accordance with the laws of the State of Oregon, without regard to its conflict of laws principles. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts of the State of Oregon.
 
 _Thank you for reading our Terms of Service. By using the Website, you agree to be bound by these Terms._

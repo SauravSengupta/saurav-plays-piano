@@ -7,6 +7,22 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Misty Forest */
+:root {
+    --text-main: #1a2f1e;    /* Deep Forest Green (Text) */
+    --bg-main: #f0f4f1;      /* Very Light Mist (Background) */
+    --bg-muted: #e2e8e4;     /* Slightly darker mist (Secondary Backgrounds) */
+    --border-main: #8f9f90;  /* Muted Lichen (Borders) */
+}
+html.dark {
+    --text-main: #e2e8f0;    /* Soft Moon White (Text) */
+    --bg-main: #0a120b;      /* Almost Black Green (Background) */
+    --bg-muted: #152217;     /* Deep Moss (Secondary Backgrounds) */
+    --border-main: #2c3e30;  /* Dark Pine (Borders) */
+}
+
+/* Default */
+/*
 :root {
     --text-main: #171717;
     --bg-main: #f2f1ec;
@@ -19,6 +35,7 @@ html.dark {
     --bg-muted: #242424;
     --border-main: #f2f1ec;
 }
+*/
 
 /* Cyan */
 /*
@@ -54,7 +71,7 @@ html.dark {
 
 @theme inline {
     --font-sans: 'Inter Variable', sans-serif;
-    --font-serif: 'Newsreader Variable', serif;
+    --font-serif: 'Inter Variable', serif;
     --text-color-main: var(--text-main);
     --background-color-main: var(--bg-main);
     --background-color-muted: var(--bg-muted);
@@ -93,6 +110,6 @@ html.dark {
     }
 
     .prose blockquote {
-        @apply font-serif font-normal italic border-none pl-0 text-[1.375em] leading-snug sm:text-[1.66667em];
+        @apply font-serif font-normal border-none pl-0 text-[1.375em] leading-snug sm:text-[1.66667em];
     }
 }
