@@ -16,10 +16,10 @@ const siteConfig: SiteConfig = {
         alt: 'Saurav Plays Piano - Cinematic and relaxing ambient piano music by Saurav'
     },
     headerNavLinks: [
-        {
+        /*{
             text: 'Home',
             href: '/'
-        },
+        },*/
         {
             text: 'Music',
             href: '/music'
