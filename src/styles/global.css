@@ -71,7 +71,7 @@ html.dark {
 
 @theme inline {
     --font-sans: 'Inter Variable', sans-serif;
-    --font-serif: 'Inter Variable', serif;
+    --font-serif: 'Inter Variable', sans-serif;
     --text-color-main: var(--text-main);
     --background-color-main: var(--bg-main);
     --background-color-muted: var(--bg-muted);
@@ -112,4 +112,17 @@ html.dark {
     .prose blockquote {
         @apply font-serif font-normal border-none pl-0 text-[1.375em] leading-snug sm:text-[1.66667em];
     }
+
+    .prose img {
+        @apply w-full h-auto rounded-lg shadow-md my-8;
+    }
+    
+    .prose > p:first-of-type img {
+        @apply mt-0;
+    }    
+}
+
+/* Add this to the very bottom of global.css */
+.font-serif, [class*="font-serif"] {
+    font-family: 'Inter Variable', sans-serif !important;
 }

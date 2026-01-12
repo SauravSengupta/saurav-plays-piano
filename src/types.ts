@@ -13,7 +13,7 @@ export type Hero = {
     title?: string;
     text?: string;
     image?: ImageInput;
-    actions?: Link[];
+    actions?: (Link & { image?: string; label?: string })[];
 };
 
 export type SubscribeForm = {

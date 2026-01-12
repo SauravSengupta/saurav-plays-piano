@@ -1,5 +1,6 @@
 import avatar from '../assets/images/avatar.jpg';
 import hero from '../assets/images/hero.jpg';
+import mistCover from '../assets/images/mist-and-mushrooms-cover.jpg';
 import type { SiteConfig } from '../types';
 
 const siteConfig: SiteConfig = {
@@ -61,7 +62,7 @@ const siteConfig: SiteConfig = {
     ],
     hero: {
         title: 'Music for quiet moments',
-        text: "Minimalist piano compositions inspired by the misty Pacific Northwest.",
+        text: "Minimalist piano compositions inspired by the Pacific Northwest.",
         image: {
             src: hero,
             alt: 'A cinematic shot of a misty evergreen forest'
@@ -69,14 +70,16 @@ const siteConfig: SiteConfig = {
         actions: [
             {
                 text: 'Mist & Mushrooms - my debut track',
-                href: '/music/mist-and-mushrooms'
+                href: '/music/mist-and-mushrooms',
+                label: 'Debut Release',
+                image: mistCover.src
             }
         ]
     },
     subscribe: {
         enabled: true,
         title: 'Join my mailing list',
-        text: 'No spam, I promise. Only updates when I have something new to share. You can unsubscribe at any time.',
+        text: 'Occasional updates on new music. Unsubscribe anytime.',
         form: {
             action: 'https://assets.mailerlite.com/jsonp/2030410/forms/176325572793730648/subscribe',
             emailFieldName: 'fields[email]',

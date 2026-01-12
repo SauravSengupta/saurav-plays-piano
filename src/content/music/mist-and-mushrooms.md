@@ -10,21 +10,23 @@ seo:
 
 ![Mist & Mushrooms](../../assets/images/mist-and-mushrooms-cover.jpg)
 
-## The Concept
+## The idea
 
-*Mist & Mushrooms* is a cinematic study of stillness and organic growth. Inspired by the quiet, foggy mornings in the Pacific Northwest, this piece focuses on the "felted" textures of the piano and the space between the notes.
+**Mist & Mushrooms** is my first ambient piano composition (not counting something I did years ago, which I might refresh and release). I tried to capture the feeling of walking through the woods in Oregon on a quiet, foggy morning.
 
-## Technical Breakdown
+## How I made it
 
-To capture the specific mood of the Oregon woods, I combined my classical roots with a modern digital workflow:
+I created a Cmaj7 - Fmaj7 chord progression in **iRealPro**, and then set that to loop while I doodled on my piano, a **Kawai Novus NV10**. At this stage I wasn't really thinking about the song structure, just playing with phrases. I recorded everything I played via MIDI.
 
-- **Performance:** Recorded via MIDI on a **Kawai Novus NV10**.
-- **Sound Design:** The primary voice is **Pianoteq**, using a felted preset on the **Bösendorfer** model to create a soft, intimate attack.
-- **Atmosphere:** Layered with gentle strings and ambient textures inside **Reaper**.
+I then took the MIDI recording into **Reaper**, and played around with the parts until I had something I liked. I tried to build up the song to something like a "chorus", and then come back down to the end. The primary voice is **Pianoteq**, using a felted preset on the **Bösendorfer** model to create a soft, intimate attack. I layered that with gentle strings and ambient textures.
+
+This was really my first time trying EQ, compressors, limiters, and so on, and it shows. Some day I'll probably look back at this and chuckle at myself. But for now I'm happy with the results.
 
 ## Status
 
 Out January 16th on Spotify, Apple Music, YouTube Music, Amazon Music, and other streaming platforms. Pre-save to your playlist [here](https://ffm.to/mistandmushrooms).
+
+*Thanks for listening,* — Saurav
 
 <!--
 <div style="aspect-ratio: 16 / 9; width: 100%;">

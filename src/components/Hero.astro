@@ -12,11 +12,11 @@ const { title, image, text, actions } = Astro.props;
 {
     (title || image?.src || text || (actions && actions.length > 0)) && (
         <section class="mb-16 flex w-full flex-col gap-8 sm:mb-24">
-            {title && <h1 class="font-serif text-3xl leading-tight font-medium sm:text-5xl sm:leading-tight">{title}</h1>}
+            {title && <h1 class="font-serif text-2xl leading-tight font-medium sm:text-4xl sm:leading-tight">{title}</h1>}
             {image?.src && (
                 <figure>
                     <CustomImage
-                        class="w-full"
+                        class="w-full rounded-lg shadow-xl opacity-50"
                         {...image}
                         widths={[480, 640, 768, 1024, 1536]}
                         sizes="(min-width: 832px) 768px, calc(100vw - 32px)"
@@ -27,10 +27,46 @@ const { title, image, text, actions } = Astro.props;
                 </figure>
             )}
             {text && <div class="prose sm:prose-lg max-w-none" set:html={marked.parse(text)} />}
+
             {actions && actions.length > 0 && (
-                <div class="flex flex-wrap gap-4">
+                <div class="mt-6 flex flex-col gap-4 w-full sm:max-w-lg mx-auto">
                     {actions.map((action) => (
-                        <Button href={action.href}>{action.text}</Button>
+                        
+                        /* Check if this specific action has an image defined */
+                        action.image ? (
+                            <a 
+                                href={action.href} 
+                                class="group flex items-center bg-white/30 backdrop-blur-md border border-white/40 rounded-xl p-3 pr-6 shadow-lg hover:scale-[1.02] transition-all duration-300 hover:bg-white/40 no-underline"
+                            >
+                                {/* Dynamic Action Image */}
+                                <div class="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 mr-4">
+                                    <img 
+                                        src={action.image} 
+                                        alt={action.text} 
+                                        class="w-full h-full object-cover rounded-lg shadow-sm group-hover:shadow-md transition-shadow" 
+                                    />
+                                </div>
+
+                                {/* Text Content */}
+                                <div class="flex flex-col text-left">
+                                    {/* Only show the label if it exists in the config */}
+                                    {action.label && (
+                                        <span class="text-[10px] uppercase tracking-[0.25em] font-bold text-main/60 mb-2 block">
+                                            {action.label}
+                                        </span>
+                                    )}                                    
+                                    <span class="font-serif text-lg text-main font-medium group-hover:text-black transition-colors">
+                                        {action.text} &rarr;
+                                    </span>
+                                </div>
+                            </a>
+                        ) : (
+                            /* Fallback for actions without images (Standard Button) */
+                            <div class="flex justify-center">
+                                <Button href={action.href}>{action.text}</Button>
+                            </div>
+                        )
+
                     ))}
                 </div>
             )}

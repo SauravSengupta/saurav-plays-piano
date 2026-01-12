@@ -6,7 +6,7 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="mx-auto w-full max-w-3xl pt-12 pb-10 sm:pt-24 sm:pb-14">
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-500">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-main">
         
         {/* 1. The Copyright Text */}
         <p>
@@ -24,7 +24,7 @@ const currentYear = new Date().getFullYear();
                 <nav aria-label="Footer navigation" class="flex gap-4">
                     {navLinks.map((link) => (
                         <a 
-                            class="hover:underline hover:underline-offset-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors" 
+                            class="hover:underline hover:underline-offset-2 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" 
                             href={link.href}
                         >
                             {link.text}

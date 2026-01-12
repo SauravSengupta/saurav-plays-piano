@@ -13,10 +13,25 @@ if (!subscribe?.enabled || !subscribe?.form?.action) {
 
 <section 
     id="subscribe-card" 
-    class:list={['bg-neutral-50 dark:bg-white/5 rounded-2xl px-8 py-16 text-center sm:px-12 transition-all duration-500 ease-in-out', className]}
+    class:list={[
+        'bg-black/10 backdrop-blur-md border border-white/10 rounded-2xl text-center transition-all duration-500 mx-auto',
+        'p-8 sm:p-10', /* CHANGED: Reduced padding from px-8 py-16 to just p-8/p-10 */
+        'max-w-2xl',   /* CHANGED: Added max-width constraint to keep it compact */
+        className
+    ]}
 >
-    {subscribe.title && <h2 class="w-full mx-auto max-w-xl font-serif text-2xl leading-tight font-medium sm:text-3xl mb-4">{subscribe.title}</h2>}
-    {subscribe.text && <p class="w-full mx-auto max-w-prose text-sm leading-relaxed text-gray-600 dark:text-gray-400 mb-8">{subscribe.text}</p>}
+    {subscribe.title && (
+        <h2 class="w-full mx-auto max-w-lg font-serif text-2xl leading-tight font-medium sm:text-3xl mb-3">
+            {subscribe.title}
+        </h2>
+    )}
+    
+    {subscribe.text && (
+        <p class="w-full mx-auto max-w-md text-sm leading-relaxed text-main mb-6">
+            {/* CHANGED: Reduced margin-bottom from mb-8 to mb-6 for tighter spacing */}
+            {subscribe.text}
+        </p>
+    )}
     
     <form
         action={subscribe.form.action}
@@ -33,7 +48,7 @@ if (!subscribe?.enabled || !subscribe?.form?.action) {
                 required
                 autocomplete="email"
                 placeholder="name@example.com"
-                class="w-full rounded-full border border-gray-200 bg-white dark:bg-black px-5 py-3 text-sm transition-colors focus:border-black focus:outline-none dark:border-gray-800 dark:focus:border-white"
+                class="w-full rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm text-main placeholder:text-main/50 transition-colors focus:border-white focus:outline-none"
                 aria-label="Email address"
             />
         </div>
@@ -53,7 +68,6 @@ if (!subscribe?.enabled || !subscribe?.form?.action) {
 </section>
 
 <script>
-  // Select both the Card (to replace content) and Form (to handle submit)
   const card = document.getElementById('subscribe-card');
   const form = document.getElementById('subscribe-form') as HTMLFormElement;
   const button = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
@@ -62,7 +76,6 @@ if (!subscribe?.enabled || !subscribe?.form?.action) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault(); 
       
-      // 1. Visual Feedback on Button
       if (button) {
           button.disabled = true;
           button.innerText = 'Joining...';
@@ -71,23 +84,21 @@ if (!subscribe?.enabled || !subscribe?.form?.action) {
       const formData = new FormData(form);
 
       try {
-        // 2. Submit silently
         await fetch(form.action, {
           method: 'POST',
           body: formData,
           mode: 'no-cors' 
         });
 
-        // 3. Replace the ENTIRE card content with the Success Message
+        // Updated success message to match new text colors
         card.innerHTML = `
-          <div class="flex flex-col items-center justify-center h-full py-2 animate-fade-in">
+          <div class="flex flex-col items-center justify-center h-full py-4 animate-fade-in">
              <p class="font-serif text-2xl text-main">Welcome to Saurav Plays Piano.</p>
-             <p class="text-sm mt-3 opacity-80">Check your inbox to confirm your subscription.</p>
+             <p class="text-sm mt-2 text-gray-400">Check your inbox to confirm.</p>
           </div>
         `;
         
       } catch (err) {
-        // Fallback if JS fails
         form.submit();
       }
     });
