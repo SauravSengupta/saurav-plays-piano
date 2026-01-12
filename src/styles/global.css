@@ -98,7 +98,11 @@ html.dark {
     }
 
     .prose a {
-        @apply underline font-normal decoration-1 underline-offset-2 decoration-dashed hover:decoration-solid;
+        /* 1. decoration-auto/solid: Removes the dash.
+        2. underline-offset-4: Pushes the line down for a cleaner read.
+        3. opacity/color transition: Makes it feel interactive but subtle.
+        */
+        @apply underline font-medium decoration-1 underline-offset-4 decoration-[var(--border-main)] text-[var(--text-main)] hover:decoration-[var(--text-main)] transition-all;
     }
 
     .prose :where(h1, h2, h3, h4, h5, h6) {

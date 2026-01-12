@@ -1,6 +1,6 @@
 ---
 title: Mist & Mushrooms
-description: My debut single — a minimalist piano exploration of the Oregon forest floor.
+description: My debut single — a walk through the Oregon woods on a foggy morning.
 publishDate: 2026-01-16
 seo:
   image:
@@ -24,7 +24,7 @@ This was really my first time trying EQ, compressors, limiters, and so on, and i
 
 ## Status
 
-Out January 16th on Spotify, Apple Music, YouTube Music, Amazon Music, and other streaming platforms. Pre-save to your playlist [here](https://ffm.to/mistandmushrooms).
+Out January 16th on Spotify, Apple Music, YouTube Music, Amazon Music, and other streaming platforms. [Pre-save on feature.fm](https://ffm.to/mistandmushrooms) to add it to your playlist.
 
 *Thanks for listening,* — Saurav
 

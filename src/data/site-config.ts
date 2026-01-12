@@ -69,7 +69,7 @@ const siteConfig: SiteConfig = {
         },
         actions: [
             {
-                text: 'Mist & Mushrooms - my debut track',
+                text: 'Mist & Mushrooms',
                 href: '/music/mist-and-mushrooms',
                 label: 'Debut Release',
                 image: mistCover.src
