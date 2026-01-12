@@ -1,5 +1,6 @@
 import avatar from '../assets/images/avatar.jpg';
 import hero from '../assets/images/hero.jpg';
+import logo from '../assets/images/logo.svg';
 import mistCover from '../assets/images/mist-and-mushrooms-cover.jpg';
 import type { SiteConfig } from '../types';
 
@@ -7,6 +8,10 @@ const siteConfig: SiteConfig = {
     website: 'https://sauravplayspiano.com',
     avatar: {
         src: avatar,
+        alt: 'Saurav Plays Piano'
+    },
+    logo: {
+        src: logo,
         alt: 'Saurav Plays Piano'
     },
     title: 'Saurav Plays Piano',
@@ -61,7 +66,7 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        title: 'Music for quiet moments',
+        title: 'For the quiet moments',
         text: "Minimalist piano compositions inspired by the Pacific Northwest.",
         image: {
             src: hero,

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <ellipse style="stroke: rgb(0, 0, 0); stroke-width: 10px; fill: none;" cx="250" cy="281.695" rx="209.718" ry="209.718"/>
+  <text style="font-family: Arial, sans-serif; font-size: 366.6px; text-anchor: middle; white-space: pre;" x="250" y="377.086">S</text>
+  <rect x="245.616" y="376.502" width="10" height="110" style="stroke: rgb(0, 0, 0);"/>
+  <rect x="280.616" y="376.502" width="10" height="110" style="stroke: rgb(0, 0, 0);"/>
+  <rect x="210.616" y="376.502" width="10" height="110" style="stroke: rgb(0, 0, 0); stroke-width: 1;"/>
+  <rect x="270.616" y="373.109" width="30" height="70" style="stroke: rgb(0, 0, 0); stroke-width: 1;"/>
+  <rect x="200.616" y="373.109" width="30" height="70" style="stroke: rgb(0, 0, 0); stroke-width: 1;"/>
+</svg>

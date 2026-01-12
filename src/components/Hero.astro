@@ -16,7 +16,7 @@ const { title, image, text, actions } = Astro.props;
             {image?.src && (
                 <figure>
                     <CustomImage
-                        class="w-full rounded-lg shadow-xl opacity-50"
+                        class="w-full rounded-lg shadow-xl opacity-70"
                         {...image}
                         widths={[480, 640, 768, 1024, 1536]}
                         sizes="(min-width: 832px) 768px, calc(100vw - 32px)"

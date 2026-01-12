@@ -6,6 +6,7 @@ const titleClass = 'text-theme-foreground font-serif text-2xl leading-tight font
 ---
 
 <header class="mx-auto mb-12 flex w-full max-w-3xl items-center gap-4 sm:mb-16">
+    <!--
     {
         siteConfig.avatar?.src && (
             <CustomImage
@@ -19,6 +20,27 @@ const titleClass = 'text-theme-foreground font-serif text-2xl leading-tight font
                 widths={[80, 160]}
                 sizes="80px"
             />
+        )
+    }
+    -->
+    {
+        siteConfig.logo && (
+            <a href="/" aria-label="Home">
+                {/* 1. Outer Container: Clips the original image out of view */}
+                <div class="relative h-16 w-16 sm:h-20 sm:w-20 overflow-hidden">
+                    
+                    {/* 2. Inner Wrapper: Moves the real image UP, casts a colored shadow DOWN */}
+                    <div style="transform: translateY(-100px); filter: drop-shadow(0 100px 0 var(--text-main));">
+                        <CustomImage
+                            {...siteConfig.logo}
+                            class="block h-full w-full object-contain"
+                            loading="eager"
+                            fetchpriority="high"
+                        />
+                    </div>
+                    
+                </div>
+            </a>
         )
     }
     <div class="grow">

@@ -78,6 +78,10 @@ html.dark {
     --border-color-main: var(--border-main);
 }
 
+html {
+    scrollbar-gutter: stable;
+}
+
 @layer utilities {
     .prose {
         --tw-prose-body: var(--text-color-main);
