@@ -13,20 +13,25 @@ const icons: Record<string, string> = {
 ---
 
 <nav class="relative min-h-10 pt-4 pb-12 sm:min-h-14 sm:pb-24 md:pt-8" aria-label="Primary navigation">
-    {
-        navLinks.length > 0 && (
-            // CHANGED: Added 'flex items-center justify-between' to handle Logo + Nav separation
-            <div class="relative mx-auto w-full max-w-3xl flex items-center justify-between">
-                
-                <a href="/" class="shrink-0 mr-8 group" aria-label="Home">
-                    <img 
-                        src="/favicon.svg" 
-                        class="h-10 w-10 dark:invert transition-transform duration-300 group-hover:scale-110" 
-                        alt="Saurav Plays Piano Logo" 
-                    />
-                </a>
+    
+    <div class="relative mx-auto w-full max-w-3xl flex items-center justify-between">
+        
+        <a href="/" class="shrink-0 mr-8 group" aria-label="Home">
+            <img 
+                src="/favicon.svg" 
+                class="h-10 w-10 dark:invert transition-transform duration-300 group-hover:scale-110" 
+                alt="Saurav Plays Piano Logo" 
+            />
+        </a>
 
-                <div class="flex items-center">
+        <div class="flex items-center gap-4 sm:gap-6">
+            
+            <div class="md:order-last">
+                <ThemeToggle />
+            </div>
+            
+            {navLinks.length > 0 && (
+                <>
                     <button
                         class="menu-toggle relative z-30 -ml-1 flex h-8 w-8 cursor-pointer items-center justify-center md:hidden"
                         aria-label="Open Menu"
@@ -83,13 +88,9 @@ const icons: Record<string, string> = {
                             </li>
                         )}
                     </ul>
-                </div>
-            </div>
-        )
-    }
-    
-    <div class="absolute top-4 right-0 z-10 md:top-8">
-        <ThemeToggle />
+                </>
+            )}
+        </div>
     </div>
 </nav>
 
