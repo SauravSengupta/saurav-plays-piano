@@ -8,7 +8,7 @@ This site serves as a hub for my original piano compositions, specifically inspi
 - **Framework**: [Astro](https://astro.build)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
 - **Language**: TypeScript
-- **Deployment**: Netlify (or Vercel, depending on your setup)
+- **Deployment**: Not sure yet, probably CloudFlare
 
 ## 🛠️ Getting Started
 
