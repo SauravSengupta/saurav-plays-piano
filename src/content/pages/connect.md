@@ -1,5 +1,5 @@
 ---
-title: Get in touch
+title: Get in Touch
 seo:
   title: Connect
   description: Get in touch through email or social media!

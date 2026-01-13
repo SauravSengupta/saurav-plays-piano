@@ -21,8 +21,10 @@ const { Content } = await render(page);
 
 <BaseLayout title={seo?.title ?? title} description={seo?.description} image={seo?.image} showHeader={false}>
     <article class="mb-16 sm:mb-24">
-        <header class="mb-8">
-            <h1 class="font-serif text-3xl leading-tight font-medium sm:text-5xl sm:leading-tight">{title}</h1>
+        <header class="mb-12 sm:mb-16">
+            <h1 class="font-serif text-3xl font-light leading-tight sm:text-5xl sm:leading-tight text-main">
+                {title}
+            </h1>
         </header>
         <div class="prose sm:prose-lg max-w-none">
             <Content />

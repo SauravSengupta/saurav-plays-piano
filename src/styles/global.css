@@ -71,7 +71,7 @@ html.dark {
 
 @theme inline {
     --font-sans: 'Inter Variable', sans-serif;
-    --font-serif: 'Inter Variable', sans-serif;
+    --font-serif: 'Newsreader Variable', serif;
     --text-color-main: var(--text-main);
     --background-color-main: var(--bg-main);
     --background-color-muted: var(--bg-muted);
@@ -109,8 +109,13 @@ html {
         @apply underline font-medium decoration-1 underline-offset-4 decoration-[var(--border-main)] text-[var(--text-main)] hover:decoration-[var(--text-main)] transition-all;
     }
 
+    /* NEW: Target body text to make it softer (90% opacity) and easier to read */
+    .prose :where(p, ul, ol, li) {
+        @apply font-light text-main/90 leading-relaxed;
+    }
+
     .prose :where(h1, h2, h3, h4, h5, h6) {
-        @apply font-serif font-medium;
+        @apply font-serif font-light;
     }
 
     .prose :where(code, strong) {
@@ -122,15 +127,10 @@ html {
     }
 
     .prose img {
-        @apply w-full h-auto rounded-lg shadow-md my-8;
+        @apply w-full h-auto rounded-lg shadow-md my-12;
     }
     
     .prose > p:first-of-type img {
         @apply mt-0;
     }    
-}
-
-/* Add this to the very bottom of global.css */
-.font-serif, [class*="font-serif"] {
-    font-family: 'Inter Variable', sans-serif !important;
 }

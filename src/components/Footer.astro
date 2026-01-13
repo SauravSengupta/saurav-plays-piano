@@ -6,32 +6,44 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="mx-auto w-full max-w-3xl pt-12 pb-10 sm:pt-24 sm:pb-14">
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-main">
+    {/* UPDATED: text-main/60 makes the entire footer sit quietly in the background */}
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-sm text-main/60">
         
-        {/* 1. The Copyright Text */}
+        {/* 1. Copyright */}
         <p>
             &copy; {currentYear} {siteConfig.title}. All rights reserved.
         </p>
 
-        {/* 2. The Separator (Hidden on mobile, visible on desktop) */}
-        {navLinks.length > 0 && (
-            <span class="hidden sm:inline-block opacity-30">|</span>
-        )}
+        <span class="hidden sm:inline-block opacity-40">&bull;</span>
 
-        {/* 3. The Links (Terms, Privacy, etc.) */}
-        {
-            navLinks.length > 0 && (
+        {/* 2. Credits (Unsplash) */}
+        <p>
+            Photography via <a href="https://unsplash.com" class="hover:text-main hover:underline transition-colors" target="_blank" rel="noopener noreferrer">Unsplash</a>
+        </p>
+        
+        <span class="hidden sm:inline-block opacity-40">&bull;</span>
+
+        {/* 3. Credits (Astro) */}
+        <p>
+            Built with <a href="https://astro.build" class="hover:text-main hover:underline transition-colors" target="_blank" rel="noopener noreferrer">Astro</a>
+        </p>
+
+        {/* 4. Navigation Links (Terms, Privacy) */}
+        {navLinks.length > 0 && (
+            <>
+                <span class="hidden sm:inline-block opacity-40">&bull;</span>
                 <nav aria-label="Footer navigation" class="flex gap-4">
                     {navLinks.map((link) => (
                         <a 
-                            class="hover:underline hover:underline-offset-2 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" 
+                            /* UPDATED: Removed hardcoded gray. Now transitions to full opacity on hover. */
+                            class="hover:text-main hover:underline transition-colors" 
                             href={link.href}
                         >
                             {link.text}
                         </a>
                     ))}
                 </nav>
-            )
-        }
+            </>
+        )}
     </div>
 </footer>

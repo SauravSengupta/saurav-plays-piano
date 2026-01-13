@@ -1,33 +1,53 @@
 ---
-import ArrowLeft from '../assets/icons/arrow-left.svg';
-import ArrowRight from '../assets/icons/arrow-right.svg';
-import IconButton from './IconButton.astro';
-
+/* Removed SVG imports to switch to a text-based "Editorial" look */
 const { page, class: className } = Astro.props;
 ---
 
-<nav aria-label="Pagination" class:list={['relative px-12 py-2 text-center', className]}>
+<nav 
+    aria-label="Pagination" 
+    class:list={[
+        /* Layout: Flexbox for centering, added padding for breathing room */
+        'flex items-center justify-center gap-8 py-8 sm:py-12', 
+        className
+    ]}
+>
+    {/* 1. PREVIOUS LINK */}
     {
-        page.url.prev && (
-            <IconButton
-                class="absolute top-1/2 left-0 -translate-y-1/2"
+        page.url.prev ? (
+            <a
                 href={page.url.prev}
+                class="font-serif italic text-lg text-main/60 hover:text-main transition-colors"
                 aria-label={`Go to page ${page.currentPage - 1} of ${page.lastPage}`}
             >
-                <ArrowLeft class="h-5 w-5 fill-current" />
-            </IconButton>
+                &larr; Prev
+            </a>
+        ) : (
+            /* Spacer: Keeps the center text perfectly centered even on the first page */
+            <span class="w-[60px]" aria-hidden="true"></span>
         )
     }
-    <span class="text-sm" aria-current="page">Page {page.currentPage} of {page.lastPage}</span>
+
+    {/* 2. THE PAGE INDICATOR: Serif, Italic, and 50% Opacity */ }
+    <span 
+        class="font-serif italic text-main/50 text-base tracking-wide select-none" 
+        aria-current="page"
+    >
+        Page {page.currentPage} of {page.lastPage}
+    </span>
+
+    {/* 3. NEXT LINK */}
     {
-        page.url.next && (
-            <IconButton
-                class="absolute top-1/2 right-0 -translate-y-1/2"
+        page.url.next ? (
+            <a
                 href={page.url.next}
+                class="font-serif italic text-lg text-main/60 hover:text-main transition-colors"
                 aria-label={`Go to page ${page.currentPage + 1} of ${page.lastPage}`}
             >
-                <ArrowRight class="h-5 w-5 fill-current" />
-            </IconButton>
+                Next &rarr;
+            </a>
+        ) : (
+            /* Spacer */
+            <span class="w-[60px]" aria-hidden="true"></span>
         )
     }
 </nav>
