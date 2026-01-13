@@ -76,7 +76,7 @@ const siteConfig: SiteConfig = {
             {
                 text: 'Mist & Mushrooms',
                 href: '/music/mist-and-mushrooms',
-                label: 'Debut Release',
+                label: 'Out January 16 • Pre-save Now',
                 image: mistCover.src
             }
         ]

@@ -28,37 +28,53 @@ const portfolio = page.data;
         {portfolio.map((project) => (
             <a 
                 href={`/music/${project.id}`} 
-                class="group flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-8"
+                class="group flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-8 !no-underline"
             >
-                {/* 1. IMAGE: Slightly reduced size (w-48 -> w-40) for a lighter feel */}
-                <div class="shrink-0 relative overflow-hidden rounded-md shadow-sm group-hover:shadow-xl sm:w-40 sm:h-40 aspect-square bg-muted/20">
+                {/* 1. IMAGE WRAPPER
+                    - Moved transition-all/duration here to animate shadow on the box
+                    - Kept opacity transition on the image itself
+                */}
+                <div class="shrink-0 relative overflow-hidden rounded-md shadow-sm group-hover:shadow-xl sm:w-40 sm:h-40 aspect-square bg-muted/20 transition-all duration-700 ease-out">
                     {project.data.seo?.image?.src && (
                         <Image 
                             src={project.data.seo.image.src} 
                             alt={project.data.seo.image.alt || project.data.title}
                             width={400}
                             height={400}
-                            class="h-full w-full object-cover transition-all duration-700 ease-out opacity-80 group-hover:opacity-100"
+                            class="h-full w-full object-cover transition-opacity duration-700 ease-out opacity-80 group-hover:opacity-100"
                         />
                     )}
                 </div>
 
-                {/* 2. TEXT INFO: Now uses Serif hierarchy */}
+                {/* 2. TEXT INFO */}
                 <div class="flex flex-col gap-2 pt-1">
                     
-                    {/* TITLE: Switched to Serif + Light Weight (Matches Homepage Hero) */}
+                    {/* --- DYNAMIC BADGE --- 
+                        Only shows if you added 'badge: "..."' to the markdown file 
+                    */}
+                    {project.data.badge && (
+                        <span class="text-[10px] font-medium tracking-[0.2em] uppercase text-main/60 mb-0.5 animate-pulse">
+                            {project.data.badge}
+                        </span>
+                    )}
+
+                    {/* TITLE */}
                     <h2 class="text-2xl font-serif font-light text-main decoration-1 underline-offset-4 group-hover:underline transition-all">
                         {project.data.title}
                     </h2>
                     
-                    {/* DESCRIPTION: Lighter weight and softer opacity */}
+                    {/* DESCRIPTION */}
                     <p class="text-main/80 text-base font-light leading-relaxed max-w-prose line-clamp-2">
                         {project.data.description}
                     </p>
                     
-                    {/* LINK: Changed from "Uppercase Bold" to "Italic Serif" (More elegant) */}
+                    {/* --- DYNAMIC ACTION LINK --- 
+                        Uses 'actionText' from markdown (e.g., "Pre-save Now") 
+                        Defaults to "Listen" if empty.
+                    */}
                     <span class="mt-2 font-serif italic text-main/60 group-hover:text-main transition-colors flex items-center gap-2">
-                        Listen <span class="not-italic text-xs">&rarr;</span>
+                        {project.data.actionText || 'Listen'} 
+                        <span class="not-italic text-xs">&rarr;</span>
                     </span>
                 </div>
             </a>

@@ -46,7 +46,9 @@ const music = defineCollection({
             description: z.string().optional(),
             publishDate: z.coerce.date(),
             isFeatured: z.boolean().default(false),
-            seo: seoSchema(image).optional()
+            seo: seoSchema(image).optional(),
+            badge: z.string().optional(),
+            actionText: z.string().optional()
         })
 });
 
