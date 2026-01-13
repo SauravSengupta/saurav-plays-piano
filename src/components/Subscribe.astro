@@ -14,11 +14,10 @@ if (!subscribe?.enabled || !subscribe?.form?.action) {
 <section 
     id="subscribe-card" 
     class:list={[
-        /* CHANGED: Switched to 'bg-white/40' for a brighter, frostier look */
-        'bg-white/40 backdrop-blur-xl border border-white/30 rounded-2xl text-center transition-all duration-500 mx-auto',
+        'bg-muted/40 dark:bg-muted/40 backdrop-blur-xl border border-main/30 rounded-2xl text-center transition-all duration-500 mx-auto',
         'p-8 sm:p-12',
         'max-w-2xl',
-        'shadow-xl', /* Added shadow for depth */
+        'shadow-xl',
         className
     ]}
 >
@@ -49,8 +48,9 @@ if (!subscribe?.enabled || !subscribe?.form?.action) {
                 required
                 autocomplete="email"
                 placeholder="name@example.com"
-                /* CHANGED: Lighter background (bg-white/60) for better visibility */
-                class="w-full rounded-full border border-white/40 bg-white/60 px-5 py-3 text-sm text-main placeholder:text-main/50 transition-colors focus:border-main focus:bg-white focus:outline-none focus:ring-1 focus:ring-main/20"
+                class="w-full rounded-full border px-5 py-3 text-sm text-main transition-colors placeholder:text-main/50 focus:outline-none focus:ring-1 focus:ring-main/20
+                    border-main/40 bg-main/60 focus:border-main focus:bg-white/70
+                    dark:border-muted/40 dark:bg-white/5 dark:focus:bg-white/10"
                 aria-label="Email address"
             />
         </div>
@@ -64,14 +64,13 @@ if (!subscribe?.enabled || !subscribe?.form?.action) {
                 </div>
             )
         }
-        
-        {/* CHANGED: Added 'bg-main text-bgColor' to make the button SOLID and bold */ }
+
         <Button 
             type="submit" 
-            class="h-full w-full sm:w-auto px-8 py-3 bg-main text-bgColor hover:opacity-90 shadow-md border-none"
+            class="w-full sm:w-auto h-full px-8 py-3 shadow-sm border-transparent bg-muted text-main hover:bg-main"
         >
             Subscribe
-        </Button>
+        </Button>        
     </form>
 </section>
 
