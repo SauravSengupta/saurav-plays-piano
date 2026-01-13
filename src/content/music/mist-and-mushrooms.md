@@ -27,17 +27,3 @@ This was really my first time trying EQ, compressors, limiters, and so on, and i
 Out January 16th on Spotify, Apple Music, YouTube Music, Amazon Music, and other streaming platforms. [Pre-save on feature.fm](https://ffm.to/mistandmushrooms) to add it to your playlist.
 
 *Thanks for listening,* — Saurav
-
-<!--
-<div style="aspect-ratio: 16 / 9; width: 100%;">
-  <iframe 
-    src="https://www.youtube.com/embed/_jZoaN76BVk" 
-    style="width: 100%; height: 100%;"
-    title="Mist & Mushrooms Preview" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    referrerpolicy="strict-origin-when-cross-origin" 
-    allowfullscreen>
-  </iframe>
-</div>
--->
