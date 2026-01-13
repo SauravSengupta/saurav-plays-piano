@@ -5,13 +5,13 @@ seo:
   description: Get in touch through email or social media!
 ---
 
-<p class="text-[var(--text-main)] opacity-80 text-sm leading-relaxed text-center max-w-lg mx-auto mb-8">
+<p class="text-main opacity-80 text-sm leading-relaxed text-center max-w-lg mx-auto mb-8">
   Have a question, or just want to chat? Reach out.
 </p>
 
-<div class="not-prose max-w-md mx-auto bg-white/30 dark:bg-black/20 backdrop-blur-xl border border-white/20 rounded-2xl p-4 sm:p-6 shadow-xl">
+<div class="not-prose max-w-md mx-auto bg-white/30 dark:bg-muted/20 backdrop-blur-xl border border-white/20 rounded-2xl p-4 sm:p-6 shadow-xl">
   <div class="flex flex-col gap-4">
-    <a href="mailto:hello@sauravplayspiano.com" class="group flex items-center justify-between bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 p-4 rounded-xl transition-all duration-500 shadow-sm hover:shadow-md !no-underline hover:no-underline border border-white/10">
+    <a href="mailto:hello@sauravplayspiano.com" class="group flex items-center justify-between bg-white/40 dark:bg-muted/10 hover:bg-white/60 dark:hover:bg-muted/20 p-4 rounded-xl transition-all duration-500 shadow-sm hover:shadow-md !no-underline hover:no-underline border border-white/10">
       <div class="flex items-center gap-5">
         <div class="text-main/80 group-hover:text-main transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
@@ -26,7 +26,7 @@ seo:
       </div>
       <span class="text-main/30 group-hover:text-main group-hover:translate-x-1 transition-all duration-500 font-serif text-xl">&rarr;</span>
     </a>
-    <a href="https://www.instagram.com/sauravplayspiano/" target="_blank" class="group flex items-center justify-between bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 p-4 rounded-xl transition-all duration-500 shadow-sm hover:shadow-md !no-underline hover:no-underline border border-white/10">
+    <a href="https://www.instagram.com/sauravplayspiano/" target="_blank" class="group flex items-center justify-between bg-white/40 dark:bg-muted/10 hover:bg-white/60 dark:hover:bg-muted/20 p-4 rounded-xl transition-all duration-500 shadow-sm hover:shadow-md !no-underline hover:no-underline border border-white/10">
       <div class="flex items-center gap-5">
         <div class="text-main/80 group-hover:text-main transition-colors">
           <svg viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
@@ -40,7 +40,7 @@ seo:
       </div>
       <span class="text-main/30 group-hover:text-main group-hover:translate-x-1 transition-all duration-500 font-serif text-xl">&rarr;</span>
     </a>
-    <a href="https://www.youtube.com/@SauravPlaysPiano" target="_blank" class="group flex items-center justify-between bg-white/40 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 p-4 rounded-xl transition-all duration-500 shadow-sm hover:shadow-md !no-underline hover:no-underline border border-white/10">
+    <a href="https://www.youtube.com/@SauravPlaysPiano" target="_blank" class="group flex items-center justify-between bg-white/40 dark:bg-muted/10 hover:bg-white/60 dark:hover:bg-muted/20 p-4 rounded-xl transition-all duration-500 shadow-sm hover:shadow-md !no-underline hover:no-underline border border-white/10">
       <div class="flex items-center gap-5">
         <div class="text-main/80 group-hover:text-main transition-colors">
           <svg viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">

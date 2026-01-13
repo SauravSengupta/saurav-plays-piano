@@ -111,7 +111,7 @@ html {
 
     /* NEW: Target body text to make it softer (90% opacity) and easier to read */
     .prose :where(p, ul, ol, li) {
-        @apply font-light text-main/90 leading-relaxed;
+        @apply font-light text-main/95 leading-relaxed;
     }
 
     .prose :where(h1, h2, h3, h4, h5, h6) {
