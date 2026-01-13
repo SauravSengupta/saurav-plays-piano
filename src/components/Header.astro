@@ -14,8 +14,6 @@ const titleClass = 'text-main font-serif text-2xl leading-tight font-light sm:te
 
     {
         siteConfig.logo && (
-            <a href="/" aria-label="Home">
-                {/* LOGO CONTAINER: Keeps the drop-shadow color trick */}
                 <div class="relative h-16 w-16 sm:h-20 sm:w-20 overflow-hidden">
                     <div style="transform: translateY(-100px); filter: drop-shadow(0 100px 0 var(--text-main));">
                         <CustomImage
@@ -26,7 +24,6 @@ const titleClass = 'text-main font-serif text-2xl leading-tight font-light sm:te
                         />
                     </div>
                 </div>
-            </a>
         )
     }
 
