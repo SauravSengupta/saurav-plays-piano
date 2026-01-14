@@ -65,10 +65,7 @@ const { Content } = await render(post);
             <!-- <Button class="copy-url-button" aria-label="Copy link" data-url={href} data-tooltip-default="Copy link" data-tooltip-success="Copied">Share</Button> -->
         </div>
 
-        <div class="mt-16 border-t border-neutral-200 dark:border-neutral-800 pt-12">
-            <Subscribe />
-        </div>
-
+        <Subscribe />
     </article>
     {
         (prevPost || nextPost) && (

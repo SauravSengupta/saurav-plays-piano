@@ -11,68 +11,70 @@ if (!subscribe?.enabled || !subscribe?.form?.action) {
 }
 ---
 
-<section 
-    id="subscribe-card" 
-    class:list={[
-        'bg-muted/40 dark:bg-muted/40 backdrop-blur-xl border border-main/30 rounded-2xl text-center transition-all duration-500 mx-auto',
-        'p-8 sm:p-12',
-        'max-w-2xl',
-        'shadow-xl',
-        className
-    ]}
->
-    {subscribe.title && (
-        <h2 class="w-full mx-auto max-w-lg font-serif text-2xl leading-tight font-light sm:text-3xl mb-4 text-main">
-            {subscribe.title}
-        </h2>
-    )}
-    
-    {subscribe.text && (
-        <p class="w-full mx-auto max-w-md text-sm leading-relaxed text-main/90 mb-8">
-            {subscribe.text}
-        </p>
-    )}
-    
-    <form
-        action={subscribe.form.action}
-        method="post"
-        id="subscribe-form"
-        name="subscribe-form"
-        class="flex w-full max-w-md mx-auto flex-col gap-3 sm:flex-row"
-        target="_blank"
+<div class="w-full mt-16 border-t border-neutral-200 dark:border-neutral-800 pt-12">
+    <section 
+        id="subscribe-card" 
+        class:list={[
+            'bg-muted/40 dark:bg-muted/40 backdrop-blur-xl border border-main/30 rounded-2xl text-center transition-all duration-500 mx-auto',
+            'p-8 sm:p-12',
+            'max-w-2xl',
+            'shadow-xl',
+            className
+        ]}
     >
-        <div class="relative w-full">
-            <input
-                type="email"
-                name={subscribe.form.emailFieldName || 'email'}
-                required
-                autocomplete="email"
-                placeholder="name@example.com"
-                class="w-full rounded-full border px-5 py-3 text-sm text-main transition-colors placeholder:text-main/50 focus:outline-none focus:ring-1 focus:ring-main/20
-                    border-main/40 bg-main/60 focus:border-main focus:bg-white/70
-                    dark:border-muted/40 dark:bg-white/5 dark:focus:bg-white/10"
-                aria-label="Email address"
-            />
-        </div>
-
-        {subscribe.form.hiddenFields?.map((field) => <input type="hidden" name={field.name} value={field.value} />)}
+        {subscribe.title && (
+            <h2 class="w-full mx-auto max-w-lg font-serif text-2xl leading-tight font-light sm:text-3xl mb-4 text-main">
+                {subscribe.title}
+            </h2>
+        )}
         
-        {
-            subscribe.form.honeypotFieldName && (
-                <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                    <input type="text" name={subscribe.form.honeypotFieldName} tabindex="-1" autocomplete="off" />
-                </div>
-            )
-        }
-
-        <Button 
-            type="submit" 
-            class="w-full sm:w-auto h-full px-8 py-3 shadow-sm border-transparent bg-muted text-main hover:bg-main"
+        {subscribe.text && (
+            <p class="w-full mx-auto max-w-md text-sm leading-relaxed text-main/90 mb-8">
+                {subscribe.text}
+            </p>
+        )}
+        
+        <form
+            action={subscribe.form.action}
+            method="post"
+            id="subscribe-form"
+            name="subscribe-form"
+            class="flex w-full max-w-md mx-auto flex-col gap-3 sm:flex-row"
+            target="_blank"
         >
-            Subscribe
-        </Button>        
-    </form>
-</section>
+            <div class="relative w-full">
+                <input
+                    type="email"
+                    name={subscribe.form.emailFieldName || 'email'}
+                    required
+                    autocomplete="email"
+                    placeholder="name@example.com"
+                    class="w-full rounded-full border px-5 py-3 text-sm text-main transition-colors placeholder:text-main/50 focus:outline-none focus:ring-1 focus:ring-main/20
+                        border-main/40 bg-main/60 focus:border-main focus:bg-white/70
+                        dark:border-muted/40 dark:bg-white/5 dark:focus:bg-white/10"
+                    aria-label="Email address"
+                />
+            </div>
+
+            {subscribe.form.hiddenFields?.map((field) => <input type="hidden" name={field.name} value={field.value} />)}
+            
+            {
+                subscribe.form.honeypotFieldName && (
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                        <input type="text" name={subscribe.form.honeypotFieldName} tabindex="-1" autocomplete="off" />
+                    </div>
+                )
+            }
+
+            <Button 
+                type="submit" 
+                class="w-full sm:w-auto h-full px-8 py-3 shadow-sm border-transparent bg-muted text-main hover:bg-main"
+            >
+                Subscribe
+            </Button>        
+        </form>
+    </section>
+</div>
 
 <script>
   const card = document.getElementById('subscribe-card');

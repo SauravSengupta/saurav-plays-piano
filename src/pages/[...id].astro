@@ -31,13 +31,7 @@ const { Content } = await render(page);
             <Content />
         </div>
 
-        {
-            showSubscribe && (
-                <div class="mt-16 border-t border-neutral-200 dark:border-neutral-800 pt-12">
-                    <Subscribe />
-                </div>
-            )
-        }
+        {showSubscribe && <Subscribe />}
 
     </article>
 </BaseLayout>
