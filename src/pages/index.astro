@@ -9,7 +9,7 @@ import siteConfig from '../data/site-config';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { sortItemsByDateDesc } from '../utils/data-utils';
 
-const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
+const posts = (await getCollection('musings')).sort(sortItemsByDateDesc);
 const featuredPosts = posts.filter(({ data }) => data.isFeatured);
 
 const tracks = (await getCollection('music')).sort(sortItemsByDateDesc);
@@ -39,7 +39,7 @@ const featuredTracks = tracks.filter(({ data }) => data.isFeatured);
                     <PostPreview post={post} class="mb-10 sm:mb-12" headingLevel="h3" />
                 ))}
                 <div class="mt-12 sm:mt-16">
-                    <Button href="/blog">View All Posts</Button>
+                    <Button href="/musings">View All Posts</Button>
                 </div>
             </div>
         )

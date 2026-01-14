@@ -31,8 +31,8 @@ const siteConfig: SiteConfig = {
             href: '/music'
         },
         {
-            text: 'Blog',
-            href: '/blog'
+            text: 'Musings',
+            href: '/musings'
         },
         {
             text: 'About',
@@ -43,14 +43,10 @@ const siteConfig: SiteConfig = {
             href: '/connect'
         },
         /*
-                {
-                    text: 'Blog',
-                    href: '/blog'
-                },
-                {
-                    text: 'Tags',
-                    href: '/tags'
-                }
+        {
+            text: 'Tags',
+            href: '/tags'
+        }
         */
     ],
     footerNavLinks: [
