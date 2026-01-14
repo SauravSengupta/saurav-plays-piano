@@ -126,8 +126,17 @@ html {
         @apply font-serif font-normal border-none pl-0 text-[1.375em] leading-snug sm:text-[1.66667em];
     }
 
+    /* Remove the annoying backticks from inline code */
+    .prose code::before,
+    .prose code::after {
+        content: none !important;
+    }
+    
     .prose img {
-        @apply w-full h-auto rounded-lg shadow-md my-12;
+        @apply w-full h-auto rounded-lg shadow-md my-12 opacity-90;
+        max-height: 500px;
+        object-fit: cover;
+        object-position: center;
     }
     
     .prose > p:first-of-type img {

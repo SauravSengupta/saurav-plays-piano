@@ -2,6 +2,7 @@ import avatar from '../assets/images/avatar.jpg';
 import hero from '../assets/images/hero.jpg';
 import logo from '../assets/images/logo.svg';
 import mistCover from '../assets/images/mist-and-mushrooms-cover.jpg';
+import vibeCode from '../assets/images/vibe-code.jpg';
 import type { SiteConfig } from '../types';
 
 const siteConfig: SiteConfig = {
@@ -18,14 +19,10 @@ const siteConfig: SiteConfig = {
     subtitle: 'Relaxing Ambient Piano Music',
     description: 'Cinematic and relaxing ambient piano music by Saurav',
     image: {
-        src: '/social-preview.jpg',
+        src: '/social-preview.webp',
         alt: 'Saurav Plays Piano - Cinematic and relaxing ambient piano music by Saurav'
     },
     headerNavLinks: [
-        /*{
-            text: 'Home',
-            href: '/'
-        },*/
         {
             text: 'Music',
             href: '/music'
@@ -78,6 +75,12 @@ const siteConfig: SiteConfig = {
                 href: '/music/mist-and-mushrooms',
                 label: 'Out January 16 • Pre-save Now',
                 image: mistCover.src
+            },
+            {
+                text: 'Premature Optimization: Building the Perfect Site for Zero Listeners',
+                href: '/musings/premature-optimization',
+                label: 'Read Latest Post',
+                image: vibeCode.src
             }
         ]
     },
