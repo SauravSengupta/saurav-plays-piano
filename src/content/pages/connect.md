@@ -1,5 +1,6 @@
 ---
 title: Get in Touch
+showSubscribe: true
 seo:
   title: Connect
   description: Get in touch through email or social media!

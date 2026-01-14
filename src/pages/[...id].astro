@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
+import Subscribe from '../components/Subscribe.astro'; // <--- 1. Import Component
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -15,7 +16,7 @@ export async function getStaticPaths() {
 type Props = { page: CollectionEntry<'pages'> };
 
 const { page } = Astro.props;
-const { title, seo } = page.data;
+const { title, seo, showSubscribe } = page.data;
 const { Content } = await render(page);
 ---
 
@@ -29,5 +30,14 @@ const { Content } = await render(page);
         <div class="prose sm:prose-lg max-w-none">
             <Content />
         </div>
+
+        {
+            showSubscribe && (
+                <div class="mt-16 border-t border-neutral-200 dark:border-neutral-800 pt-12">
+                    <Subscribe />
+                </div>
+            )
+        }
+
     </article>
 </BaseLayout>
