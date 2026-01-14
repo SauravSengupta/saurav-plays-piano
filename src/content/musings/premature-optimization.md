@@ -58,4 +58,4 @@ Once I had it working locally the way I wanted, deployment was pretty easy. I pu
 
 I started the project on Sunday morning. The site was live by Monday night. Everything works (I think), and it looks way better than I expected. The infrastructure is ready for millions of fans.
 
-Now I just need the fans. And figure out dark mode on mobile.
+Now I just need the fans. And a working dark mode on mobile.
