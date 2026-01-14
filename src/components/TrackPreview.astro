@@ -2,14 +2,14 @@
 import { type CollectionEntry } from 'astro:content';
 import ArrowRight from '../assets/icons/arrow-right.svg';
 
-type Props = { project: CollectionEntry<'music'>; class?: string; headingLevel?: 'h2' | 'h3' };
+type Props = { track: CollectionEntry<'music'>; class?: string; headingLevel?: 'h2' | 'h3' };
 
-const { project, class: className, headingLevel = 'h2' } = Astro.props;
-const { title, description } = project.data;
+const { track, class: className, headingLevel = 'h2' } = Astro.props;
+const { title, description } = track.data;
 const TitleTag = headingLevel;
 ---
 
-<a class:list={['group flex items-start justify-between gap-8', className]} href={`/music/${project.id}/`}>
+<a class:list={['group flex items-start justify-between gap-8', className]} href={`/music/${track.id}/`}>
     <div class="grow">
         <TitleTag
             class="font-serif text-xl leading-tight font-light group-hover:underline group-hover:decoration-dashed group-hover:decoration-1 group-hover:underline-offset-4 sm:text-2xl"

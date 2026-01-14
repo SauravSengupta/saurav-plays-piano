@@ -1,31 +1,31 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import ProjectPreview from '../../components/ProjectPreview.astro';
+import TrackPreview from '../../components/TrackPreview.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 
 export async function getStaticPaths() {
-    const projects = (await getCollection('music')).sort(sortItemsByDateDesc);
-    const projectCount = projects.length;
-    return projects.map((project, index) => ({
-        params: { id: project.id },
+    const tracks = (await getCollection('music')).sort(sortItemsByDateDesc);
+    const trackCount = tracks.length;
+    return tracks.map((track, index) => ({
+        params: { id: track.id },
         props: {
-            project,
-            prevProject: index + 1 !== projectCount ? projects[index + 1] : null,
-            nextProject: index !== 0 ? projects[index - 1] : null
+            track: track,
+            prevTrack: index + 1 !== trackCount ? tracks[index + 1] : null,
+            nextTrack: index !== 0 ? tracks[index - 1] : null
         }
     }));
 }
 
 type Props = {
-    project: CollectionEntry<'music'>;
-    prevProject: CollectionEntry<'music'>;
-    nextProject: CollectionEntry<'music'>;
+    track: CollectionEntry<'music'>;
+    prevTrack: CollectionEntry<'music'>;
+    nextTrack: CollectionEntry<'music'>;
 };
 
-const { project, prevProject, nextProject } = Astro.props;
-const { title, description, seo } = project.data;
-const { Content } = await render(project);
+const { track, prevTrack, nextTrack } = Astro.props;
+const { title, description, seo } = track.data;
+const { Content } = await render(track);
 ---
 
 <BaseLayout title={seo?.title ?? title} description={seo?.description ?? description} image={seo?.image} pageType="article" showHeader={false}>
@@ -38,11 +38,11 @@ const { Content } = await render(project);
         </div>
     </article>
     {
-        (prevProject || nextProject) && (
+        (prevTrack || nextTrack) && (
             <div class="my-16 sm:my-24">
                 <h2 class="mb-12 font-serif text-xl sm:mb-16 sm:text-2xl">View Next</h2>
-                {nextProject && <ProjectPreview project={nextProject} class="mb-10 sm:mb-12" headingLevel="h3" />}
-                {prevProject && <ProjectPreview project={prevProject} class="mb-10 sm:mb-12" headingLevel="h3" />}
+                {nextTrack && <TrackPreview track={nextTrack} class="mb-10 sm:mb-12" headingLevel="h3" />}
+                {prevTrack && <TrackPreview track={prevTrack} class="mb-10 sm:mb-12" headingLevel="h3" />}
             </div>
         )
     }

@@ -31,6 +31,10 @@ const siteConfig: SiteConfig = {
             href: '/music'
         },
         {
+            text: 'Blog',
+            href: '/blog'
+        },
+        {
             text: 'About',
             href: '/about'
         },
@@ -97,7 +101,7 @@ const siteConfig: SiteConfig = {
         }
     },
     postsPerPage: 8,
-    projectsPerPage: 8
+    tracksPerPage: 8
 };
 
 export default siteConfig;
