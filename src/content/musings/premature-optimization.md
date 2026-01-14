@@ -28,9 +28,9 @@ I wanted a fast, lightweight website without too many bells and whistles. It was
 
 So we picked the "Modern Minimalist" stack:
 
-* **Astro:** Because it ships zero JavaScript by default and is blazing fast.
+* **Astro:** What intrigued me is that it generates static HTML as much as possible, only using JavaScript for any dynamic elements.
 * **Tailwind CSS:** Because Gemini suggested this, and I had zero context for picking a different framework.
-* **Cloudflare Pages:** For hosting that connects directly to my GitHub repo.
+* **Cloudflare Pages:** This part I actually understood - hosting on the Edge closer to the user, rather than a centralized "origin" server.
 
 ## Man vs. Machine: The Architecture Battle
 
