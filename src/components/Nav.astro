@@ -68,34 +68,10 @@ const icons: Record<string, string> = {
 
         <div class="flex items-center gap-2 sm:gap-2">
             
-            {/* 1. SOCIAL ICONS: Enforced 32px width (w-8) to match Theme Toggle exactly */}
-            {socialLinks.length > 0 && socialLinks.map((link) => (
-                <a
-                    class="hidden md:flex h-8 w-8 items-center justify-center rounded-full text-main hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={link.text}
-                >
-                    {icons[link.text] ? (
-                        <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d={icons[link.text]} /></svg>
-                    ) : (
-                        <span class="text-sm font-medium">{link.text}</span>
-                    )}
-                </a>
-            ))}
-
-            {/* 2. SEPARATOR DOT: Now sits in its own 32px box to maintain perfect rhythm */}
-            {socialLinks.length > 0 && (
-                <div class="hidden md:flex h-8 w-4 items-center justify-center">
-                    <div class="h-1 w-1 rounded-full bg-current opacity-60"></div>
-                </div>
-            )}
-
-            {/* 3. Theme Toggle (Already 32px / w-8 inside the component) */}
+            {/* Theme Toggle */}
             <ThemeToggle />
             
-            {/* 4. Mobile Hamburger */}
+            {/* Mobile Hamburger */}
             <button
                 class="menu-toggle relative z-30 -ml-1 flex h-8 w-8 cursor-pointer items-center justify-center md:hidden"
                 aria-label="Open Menu"
