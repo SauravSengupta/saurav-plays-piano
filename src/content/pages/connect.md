@@ -9,7 +9,7 @@ seo:
   <!-- Artist Streaming Links -->
   <div>
     <div class="mb-4 sm:mb-5">
-      <p class="text-main opacity-80 text-sm leading-relaxed text-center max-w-lg mx-auto mb-10">Follow</p>
+      <p class="text-main opacity-80 text-sm leading-relaxed text-center max-w-lg mx-auto mb-10">Listen</p>
     </div>
     <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
       <a href="https://open.spotify.com/artist/3mZHoN99CdgMbztiyhpaSm" target="_blank" rel="noopener noreferrer" title="Spotify" class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-muted/40 border border-main/10 text-main hover:bg-muted/60 hover:border-main/30 transition-colors !no-underline">
@@ -43,7 +43,7 @@ seo:
   </div>
 
 <p class="text-main opacity-80 text-sm leading-relaxed text-center max-w-lg mx-auto mb-10">
-  Contact
+  Connect
 </p>
 
 <div class="not-prose max-w-md mx-auto">
