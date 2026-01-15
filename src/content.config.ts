@@ -53,4 +53,15 @@ const music = defineCollection({
         })
 });
 
-export const collections = { musings, pages, music };
+const releases = defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/releases' }),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            image: image(),
+            releaseDate: z.coerce.date(),
+            links: z.record(z.string().url().or(z.literal('#'))).optional()
+        })
+});
+
+export const collections = { musings, pages, music, releases };

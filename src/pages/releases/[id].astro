@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import CustomImage from '../../components/CustomImage.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+    const releases = await getCollection('releases');
+    return releases.map((release) => ({
+        params: { id: release.id },
+        props: { release }
+    }));
+}
+
+type Props = {
+    release: (typeof releases)[0];
+};
+
+const { release } = Astro.props;
+const releases = await getCollection('releases');
+---
+
+<BaseLayout title={`${release.data.title} - Listen`} showHeader={false}>
+    <article class="mb-16 sm:mb-24">
+        {/* Cover Art */}
+        <div class="flex justify-center mb-12 sm:mb-16">
+            <figure class="relative w-full max-w-sm aspect-square rounded-lg shadow-xl overflow-hidden bg-white dark:bg-muted">
+                <CustomImage
+                    class="w-full h-full object-cover"
+                    src={release.data.image}
+                    alt={release.data.title}
+                    widths={[300, 400, 500]}
+                    sizes="(min-width: 500px) 500px, calc(100vw - 32px)"
+                    fetchpriority="high"
+                    loading="eager"
+                />
+            </figure>
+        </div>
+
+        {/* Title and Release Date */}
+        <div class="text-center mb-12 sm:mb-16">
+            <h1 class="font-serif text-3xl font-light leading-tight sm:text-5xl text-main mb-4">
+                {release.data.title}
+            </h1>
+            <p class="text-main/60 text-sm">
+                Available now on all platforms
+            </p>
+        </div>
+
+        {/* Links Grid */}
+        {release.data.links && (
+            <div class="max-w-2xl mx-auto">
+                <h2 class="font-serif text-xl font-light text-main mb-8 text-center">Listen Now</h2>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+                    {Object.entries(release.data.links).map(([platform, url]) => (
+                        <a
+                            href={url}
+                            target={url !== '#' ? '_blank' : undefined}
+                            rel={url !== '#' ? 'noopener noreferrer' : undefined}
+                            class={`
+                                px-4 sm:px-6 py-3 sm:py-4 rounded-lg
+                                font-serif text-sm leading-tight
+                                transition-all duration-300
+                                text-center no-underline
+                                ${url !== '#'
+                                    ? 'bg-muted/40 backdrop-blur-sm border border-main/30 hover:border-main hover:bg-muted/60 text-main'
+                                    : 'bg-muted/20 border border-main/20 text-main/50 cursor-default opacity-60'
+                                }
+                            `}
+                        >
+                            {platform}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        )}
+    </article>
+</BaseLayout>

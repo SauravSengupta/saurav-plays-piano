@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Button from '../components/Button.astro';
 import Hero from '../components/Hero.astro';
 import PostPreview from '../components/PostPreview.astro';
+import ReleaseHero from '../components/ReleaseHero.astro';
 import Subscribe from '../components/Subscribe.astro';
 import TrackPreview from '../components/TrackPreview.astro';
 import siteConfig from '../data/site-config';
@@ -17,7 +18,11 @@ const featuredTracks = tracks.filter(({ data }) => data.isFeatured);
 ---
 
 <BaseLayout description={siteConfig.description}>
-    <Hero {...siteConfig.hero} />
+    {siteConfig.homeHeroType === 'releaseHero' ? (
+        <ReleaseHero {...siteConfig.releaseHero} />
+    ) : (
+        <Hero {...siteConfig.hero} />
+    )}
     {
         featuredTracks?.length > 0 && (
             <div class="mb-16 sm:mb-24">

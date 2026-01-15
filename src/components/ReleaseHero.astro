@@ -1,0 +1,72 @@
+---
+import type { ImageInput } from '../types';
+import { getReleaseData, getReleaseLinks } from '../utils/get-release';
+import { platformIcons, platformLabels } from '../utils/platform-icons';
+import CustomImage from './CustomImage.astro';
+
+export type PlatformLink = {
+	platform: 'spotify' | 'apple-music' | 'youtube-music' | 'amazon-music' | 'other';
+	href: string;
+};
+
+type Props = {
+	image?: ImageInput;
+	links?: PlatformLink[];
+	releaseId?: string;
+};
+
+const { image: propImage, links: propLinks, releaseId } = Astro.props;
+
+let image = propImage;
+let links = propLinks || [];
+
+if (releaseId) {
+	const releaseData = await getReleaseData(releaseId);
+	if (releaseData) {
+		image = releaseData.image;
+		links = await getReleaseLinks(releaseId);
+	}
+}
+---
+
+<section class="mb-16 flex w-full flex-col gap-12 items-center sm:mb-24">
+    {/* Centered Square Image */}
+    <figure class="relative w-full max-w-xs aspect-square rounded-lg shadow-xl overflow-hidden bg-white dark:bg-muted">
+        <CustomImage
+            class="w-full h-full object-cover"
+            {...image}
+            widths={[300, 400]}
+            sizes="(min-width: 400px) 400px, calc(100vw - 32px)"
+            fetchpriority="high"
+            loading="eager"
+        />
+    </figure>
+
+    {/* Listen Now Section */}
+    {links && links.length > 0 && (
+        <div class="flex flex-col items-center gap-6">
+            <h2 class="font-serif text-xl font-light text-main">Listen Now</h2>
+            
+            {/* Platform Buttons Row */}
+            <div class="flex items-center justify-center gap-4 sm:gap-6 flex-wrap">
+                {links.map((link) => {
+                    const label = platformLabels[link.platform];
+                    return (
+                        <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center p-3 sm:p-4 rounded-full bg-muted/40 backdrop-blur-sm border border-main/30 hover:border-main hover:bg-muted/60 transition-all duration-300 group text-main hover:text-main"
+                            aria-label={`Listen on ${label}`}
+                            title={label}
+                        >
+                            {platformIcons[link.platform] ? (
+                                <svg class="w-6 h-6 sm:w-7 sm:h-7 fill-current" viewBox="0 0 16 16" set:html={platformIcons[link.platform]} />
+                            ) : null}
+                        </a>
+                    );
+                })}
+            </div>
+        </div>
+    )}
+</section>

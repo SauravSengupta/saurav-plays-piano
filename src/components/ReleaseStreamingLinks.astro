@@ -1,0 +1,13 @@
+---
+import { getReleaseLinks } from '../utils/get-release';
+import StreamingLinks from './StreamingLinks.astro';
+
+export interface Props {
+	releaseId: string;
+}
+
+const { releaseId } = Astro.props;
+const links = await getReleaseLinks(releaseId);
+---
+
+<StreamingLinks {links} />

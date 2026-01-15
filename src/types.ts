@@ -16,6 +16,17 @@ export type Hero = {
     actions?: (Link & { image?: string; label?: string })[];
 };
 
+export type PlatformLink = {
+    platform: 'spotify' | 'apple-music' | 'youtube-music' | 'amazon-music' | 'other';
+    href: string;
+};
+
+export type ReleaseHero = {
+    image?: ImageInput;
+    links?: PlatformLink[];
+    releaseId?: string;
+};
+
 export type SubscribeForm = {
     action: string;
     emailFieldName?: string;
@@ -41,6 +52,8 @@ export type SiteConfig = {
     footerNavLinks?: Link[];
     socialLinks?: Link[];
     hero?: Hero;
+    releaseHero?: ReleaseHero;
+    homeHeroType?: 'hero' | 'releaseHero';
     subscribe?: Subscribe;
     postsPerPage?: number;
     tracksPerPage?: number;

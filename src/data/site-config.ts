@@ -84,6 +84,11 @@ const siteConfig: SiteConfig = {
             }
         ]
     },
+    // Set to 'releaseHero' to show release hero instead of regular hero
+    homeHeroType: 'releaseHero' as const,
+    releaseHero: {
+        releaseId: 'mist-and-mushrooms' // Image and links are fetched from releases collection
+    },
     subscribe: {
         enabled: true,
         title: 'Join my mailing list',
