@@ -2,7 +2,7 @@
 import { platformIcons, platformLabels } from '../utils/platform-icons';
 
 export interface StreamingLink {
-	platform: 'spotify' | 'apple-music' | 'youtube-music' | 'amazon-music' | 'other';
+	platform: 'spotify' | 'apple-music' | 'youtube-music' | 'amazon-music' | 'bandcamp' | 'other';
 	href: string;
 	label?: string;
 }
@@ -13,7 +13,7 @@ interface Props {
 
 const { links } = Astro.props;
 
-const MAIN_PLATFORMS = ['spotify', 'apple-music', 'youtube-music', 'amazon-music'];
+const MAIN_PLATFORMS = ['spotify', 'apple-music', 'youtube-music', 'amazon-music', 'bandcamp'];
 const mainLinks = links.filter((link) => MAIN_PLATFORMS.includes(link.platform));
 const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform));
 ---
@@ -68,20 +68,16 @@ const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform
 			<div
 				class="streaming-options-menu absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 py-2 bg-[#f0f4f1]/95 dark:bg-[#0a120b]/95 backdrop-blur-md rounded-xl shadow-xl border border-main/10 opacity-0 invisible transition-all duration-200 transform origin-top scale-95 z-50"
 			>
-				{otherLinks.map((link) => {
-					const isDisabled = link.href === '#';
-					const Element = isDisabled ? 'span' : 'a';
-					return (
-						<Element
-							href={isDisabled ? undefined : link.href}
-							target={isDisabled ? undefined : "_blank"}
-							rel={isDisabled ? undefined : "noopener noreferrer"}
-							class={`block px-4 py-3 text-sm text-center transition-colors !no-underline ${isDisabled ? '!text-main/40 cursor-not-allowed' : '!text-main/80 hover:!text-main hover:bg-black/5 dark:hover:bg-white/10'}`}
-						>
-							{link.label || platformLabels[link.platform] || 'Other'}
-						</Element>
-					);
-				})}
+				{otherLinks.filter((link) => link.href !== '#').map((link) => (
+					<a
+						href={link.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="block px-4 py-3 text-sm text-center transition-colors !no-underline !text-main/80 hover:!text-main hover:bg-black/5 dark:hover:bg-white/10"
+					>
+						{link.label || platformLabels[link.platform] || 'Other'}
+					</a>
+				))}
 			</div>
 		</div>
 	)}

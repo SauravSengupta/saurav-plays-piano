@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content';
 import type { StreamingLink } from '../components/StreamingLinks.astro';
 
-const mainPlatforms = ['Spotify', 'Apple Music', 'YouTube Music', 'Amazon Music'];
+const mainPlatforms = ['Spotify', 'Apple Music', 'YouTube Music', 'Amazon Music', 'Bandcamp'];
 
 export async function getReleaseData(releaseId: string) {
     const releases = await getCollection('releases');
@@ -48,7 +48,8 @@ export async function getReleaseLinks(releaseId: string): Promise<StreamingLink[
                 | 'spotify'
                 | 'apple-music'
                 | 'youtube-music'
-                | 'amazon-music';
+                | 'amazon-music'
+                | 'bandcamp';
             links.push({ platform: platformKey, href });
         }
     }

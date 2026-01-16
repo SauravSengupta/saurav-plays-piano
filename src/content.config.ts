@@ -66,7 +66,7 @@ const releases = defineCollection({
                 z.record(z.string().url().or(z.literal('#'))),
                 z.array(
                     z.object({
-                        platform: z.enum(['spotify', 'apple-music', 'youtube-music', 'amazon-music', 'other']),
+                        platform: z.enum(['spotify', 'apple-music', 'youtube-music', 'amazon-music', 'bandcamp', 'other']),
                         href: z.string().url().or(z.literal('#')),
                         label: z.string().optional()
                     })

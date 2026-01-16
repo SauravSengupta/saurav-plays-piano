@@ -17,7 +17,7 @@ export type Hero = {
 };
 
 export type PlatformLink = {
-    platform: 'spotify' | 'apple-music' | 'youtube-music' | 'amazon-music' | 'other';
+    platform: 'spotify' | 'apple-music' | 'youtube-music' | 'amazon-music' | 'bandcamp' | 'other';
     href: string;
 };
 
