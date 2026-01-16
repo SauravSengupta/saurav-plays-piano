@@ -49,7 +49,8 @@ const music = defineCollection({
             isFeatured: z.boolean().default(false),
             seo: seoSchema(image).optional(),
             badge: z.string().optional(),
-            actionText: z.string().optional()
+            actionText: z.string().optional(),
+            youtubeUrl: z.string().url().optional()
         })
 });
 
@@ -60,6 +61,7 @@ const releases = defineCollection({
             title: z.string(),
             image: image(),
             releaseDate: z.coerce.date(),
+            youtubeUrl: z.string().url().optional(),
             links: z.union([
                 z.record(z.string().url().or(z.literal('#'))),
                 z.array(

@@ -1,0 +1,43 @@
+---
+import CustomImage from './CustomImage.astro';
+import type { ImageInput } from '../types';
+
+interface Props {
+	youtubeUrl?: string;
+	image?: ImageInput;
+	alt?: string;
+}
+
+const { youtubeUrl, image, alt } = Astro.props;
+
+// Extract YouTube video ID from URL
+function getYouTubeVideoId(url: string | undefined): string | null {
+	if (!url) return null;
+	const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+	return match ? match[1] : null;
+}
+
+const youtubeVideoId = getYouTubeVideoId(youtubeUrl);
+---
+
+{youtubeVideoId ? (
+	<div class="relative w-full aspect-video rounded-lg shadow-md overflow-hidden bg-black my-12">
+		<iframe
+			class="absolute inset-0 w-full h-full"
+			src={`https://www.youtube.com/embed/${youtubeVideoId}`}
+			title="YouTube video player"
+			frameborder="0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			referrerpolicy="strict-origin-when-cross-origin"
+			allowfullscreen
+		></iframe>
+	</div>
+) : image ? (
+	<CustomImage
+		class="w-full h-auto rounded-lg shadow-md my-12 opacity-90"
+		{...image}
+		widths={[400, 600, 800]}
+		sizes="(min-width: 800px) 800px, 100vw"
+		alt={alt || ''}
+	/>
+) : null}

@@ -20,14 +20,25 @@ const { image: propImage, links: propLinks, releaseId } = Astro.props;
 
 let image = propImage;
 let links = propLinks || [];
+let youtubeUrl: string | undefined;
 
 if (releaseId) {
 	const releaseData = await getReleaseData(releaseId);
 	if (releaseData) {
 		image = releaseData.image;
 		links = await getReleaseLinks(releaseId);
+		youtubeUrl = releaseData.youtubeUrl;
 	}
 }
+
+// Extract YouTube video ID from URL
+function getYouTubeVideoId(url: string | undefined): string | null {
+	if (!url) return null;
+	const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+	return match ? match[1] : null;
+}
+
+const youtubeVideoId = getYouTubeVideoId(youtubeUrl);
 
 const MAIN_PLATFORMS = ['spotify', 'apple-music', 'youtube-music', 'amazon-music'];
 const mainLinks = links.filter((link) => MAIN_PLATFORMS.includes(link.platform));
@@ -35,17 +46,31 @@ const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform
 ---
 
 <section class="mb-16 flex w-full flex-col gap-12 items-center sm:mb-24">
-    {/* Centered Square Image */}
-    <figure class="relative w-full max-w-xs aspect-square rounded-lg shadow-xl overflow-hidden bg-white dark:bg-muted">
-        <CustomImage
-            class="w-full h-full object-cover"
-            {...image}
-            widths={[300, 400]}
-            sizes="(min-width: 400px) 400px, calc(100vw - 32px)"
-            fetchpriority="high"
-            loading="eager"
-        />
-    </figure>
+    {/* YouTube Embed or Image */}
+    {youtubeVideoId ? (
+        <div class="relative w-full max-w-2xl aspect-video rounded-lg shadow-xl overflow-hidden bg-black">
+            <iframe
+                class="absolute inset-0 w-full h-full"
+                src={`https://www.youtube.com/embed/${youtubeVideoId}`}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+            ></iframe>
+        </div>
+    ) : (
+        <figure class="relative w-full max-w-xs aspect-square rounded-lg shadow-xl overflow-hidden bg-white dark:bg-muted">
+            <CustomImage
+                class="w-full h-full object-cover"
+                {...image}
+                widths={[300, 400]}
+                sizes="(min-width: 400px) 400px, calc(100vw - 32px)"
+                fetchpriority="high"
+                loading="eager"
+            />
+        </figure>
+    )}
 
     {/* Listen Now Section */}
     {links && links.length > 0 && (
@@ -92,7 +117,7 @@ const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform
                         </button>
 
                         <div
-                            class="other-options-menu absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 py-2 bg-main/95 backdrop-blur-md rounded-xl shadow-xl border border-main/10 opacity-0 invisible transition-all duration-200 transform origin-top scale-95 z-50"
+                            class="other-options-menu absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 py-2 bg-[#f0f4f1]/95 dark:bg-[#0a120b]/95 backdrop-blur-md rounded-xl shadow-xl border border-main/10 opacity-0 invisible transition-all duration-200 transform origin-top scale-95 z-50"
                         >
                             {otherLinks.map((link) => {
                                 const isDisabled = link.href === '#';

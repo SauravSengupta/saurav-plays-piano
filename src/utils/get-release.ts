@@ -14,7 +14,8 @@ export async function getReleaseData(releaseId: string) {
     return {
         title: release.data.title,
         image: release.data.image,
-        releaseDate: release.data.releaseDate
+        releaseDate: release.data.releaseDate,
+        youtubeUrl: release.data.youtubeUrl
     };
 }
 export async function getReleaseLinks(releaseId: string): Promise<StreamingLink[]> {

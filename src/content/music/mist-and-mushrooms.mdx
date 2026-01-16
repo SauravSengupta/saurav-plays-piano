@@ -4,6 +4,8 @@ description: My debut single — a walk through the Oregon woods on a foggy morn
 publishDate: 2026-01-16
 badge: "Out January 16"
 actionText: "Pre-save Now"
+isFeatured: true
+youtubeUrl: https://www.youtube.com/watch?v=_jZoaN76BVk
 seo:
   image:
     src: '../../assets/images/mist-and-mushrooms-cover.jpg'
@@ -11,8 +13,10 @@ seo:
 ---
 
 import ReleaseStreamingLinks from '../../components/ReleaseStreamingLinks.astro';
+import TrackMedia from '../../components/TrackMedia.astro';
+import coverImage from '../../assets/images/mist-and-mushrooms-cover.jpg';
 
-![Mist & Mushrooms](../../assets/images/mist-and-mushrooms-cover.jpg)
+<TrackMedia youtubeUrl={frontmatter.youtubeUrl} image={{ src: coverImage }} alt="Mist & Mushrooms" />
 
 ### Listen Now
 
