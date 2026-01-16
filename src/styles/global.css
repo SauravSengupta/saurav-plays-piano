@@ -67,7 +67,7 @@ html {
     }
 
     .prose :where(h1, h2, h3, h4, h5, h6) {
-        @apply font-serif font-light;
+        @apply font-serif font-light tracking-tight;
     }
 
     .prose :where(code, strong) {

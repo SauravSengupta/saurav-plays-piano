@@ -50,7 +50,7 @@ const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform
     {/* Listen Now Section */}
     {links && links.length > 0 && (
         <div class="flex flex-col items-center gap-6">
-            <h2 class="font-serif text-xl font-light text-main">Listen Now</h2>
+            <h2 class="font-serif text-xl font-light text-main tracking-tight">Listen Now</h2>
             
             {/* Platform Buttons Row */}
             <div class="flex items-center justify-center gap-4 sm:gap-6 flex-wrap">
@@ -102,7 +102,7 @@ const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform
                                         href={isDisabled ? undefined : link.href}
                                         target={isDisabled ? undefined : "_blank"}
                                         rel={isDisabled ? undefined : "noopener noreferrer"}
-                                        class={`block px-4 py-3 text-sm text-center transition-colors ${isDisabled ? 'text-main/40 cursor-not-allowed' : 'text-main/80 hover:text-main hover:bg-main/5'}`}
+                                    class={`block px-4 py-3 text-sm text-center transition-colors ${isDisabled ? 'text-main/40 cursor-not-allowed' : 'text-main/80 hover:text-main hover:bg-black/5 dark:hover:bg-white/10'}`}
                                     >
                                         {link.label || platformLabels[link.platform] || 'Other'}
                                     </Element>
