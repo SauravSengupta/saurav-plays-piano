@@ -16,7 +16,7 @@ const siteConfig: SiteConfig = {
         alt: 'Saurav Plays Piano'
     },
     title: 'Saurav Plays Piano',
-    subtitle: 'Relaxing Ambient Piano Music',
+    subtitle: 'For the quiet moments',
     description: 'Cinematic and relaxing ambient piano music by Saurav',
     image: {
         src: '/social-preview.webp',
