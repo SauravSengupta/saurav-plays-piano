@@ -4,6 +4,7 @@ import { platformIcons, platformLabels } from '../utils/platform-icons';
 export interface StreamingLink {
 	platform: 'spotify' | 'apple-music' | 'youtube-music' | 'amazon-music' | 'other';
 	href: string;
+	label?: string;
 }
 
 interface Props {
@@ -11,28 +12,134 @@ interface Props {
 }
 
 const { links } = Astro.props;
+
+const MAIN_PLATFORMS = ['spotify', 'apple-music', 'youtube-music', 'amazon-music'];
+const mainLinks = links.filter((link) => MAIN_PLATFORMS.includes(link.platform));
+const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform));
 ---
 
-<div class="flex flex-wrap gap-3 sm:gap-4">
-	{links.map((link) => (
-		<a
-			href={link.href}
-			rel="noopener noreferrer"
-			target={link.href !== '#' ? '_blank' : undefined}
-			title={platformLabels[link.platform]}
-			class={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full transition-colors ${
-				link.href === '#'
-					? 'bg-muted/20 border border-main/20 text-main/50 opacity-60 cursor-not-allowed'
-					: 'bg-muted/40 border border-main/10 text-main hover:bg-muted/60 hover:border-main/30'
-			}`}
-		>
-			{platformIcons[link.platform] ? (
-				<svg
-					class="w-6 h-6 sm:w-7 sm:h-7 fill-current"
-					viewBox="0 0 16 16"
-					set:html={platformIcons[link.platform]}
-				/>
-			) : null}
-		</a>
-	))}
+<div class="flex flex-wrap gap-3 sm:gap-4 items-center">
+	{mainLinks.map((link) => {
+		const isDisabled = link.href === '#';
+		const Element = isDisabled ? 'span' : 'a';
+		const label = platformLabels[link.platform];
+		return (
+			<Element
+				href={isDisabled ? undefined : link.href}
+				rel={isDisabled ? undefined : "noopener noreferrer"}
+				target={isDisabled ? undefined : '_blank'}
+				title={label}
+				aria-label={`Listen on ${label}`}
+				class={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full transition-colors ${
+					isDisabled
+						? 'bg-muted/20 border border-main/20 text-main/50 opacity-60 cursor-not-allowed'
+						: 'bg-muted/40 border border-main/10 text-main hover:bg-muted/60 hover:border-main/30'
+				}`}
+				aria-disabled={isDisabled}
+			>
+				{platformIcons[link.platform] ? (
+					<svg
+						class="w-6 h-6 sm:w-7 sm:h-7 fill-current"
+						viewBox="0 0 16 16"
+						set:html={platformIcons[link.platform]}
+					/>
+				) : null}
+			</Element>
+		);
+	})}
+
+	{/* Dropdown for Other Links */}
+	{otherLinks.length > 0 && (
+		<div class="relative">
+			<button
+				type="button"
+				class="streaming-options-toggle inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-muted/40 border border-main/10 text-main hover:bg-muted/60 hover:border-main/30 transition-colors cursor-pointer"
+				aria-label="More options"
+				aria-expanded="false"
+				aria-haspopup="true"
+			>
+				{platformIcons['other'] ? (
+					<svg class="w-6 h-6 sm:w-7 sm:h-7 fill-current" viewBox="0 0 16 16" set:html={platformIcons['other']} />
+				) : (
+					<span class="text-xl font-bold leading-none pb-2">...</span>
+				)}
+			</button>
+
+			<div
+				class="streaming-options-menu absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 py-2 bg-[#f0f4f1]/95 dark:bg-[#0a120b]/95 backdrop-blur-md rounded-xl shadow-xl border border-main/10 opacity-0 invisible transition-all duration-200 transform origin-top scale-95 z-50"
+			>
+				{otherLinks.map((link) => {
+					const isDisabled = link.href === '#';
+					const Element = isDisabled ? 'span' : 'a';
+					return (
+						<Element
+							href={isDisabled ? undefined : link.href}
+							target={isDisabled ? undefined : "_blank"}
+							rel={isDisabled ? undefined : "noopener noreferrer"}
+							class={`block px-4 py-3 text-sm text-center transition-colors ${isDisabled ? 'text-main/40 cursor-not-allowed' : 'text-main/80 hover:text-main hover:bg-black/5 dark:hover:bg-white/10'}`}
+						>
+							{link.label || platformLabels[link.platform] || 'Other'}
+						</Element>
+					);
+				})}
+			</div>
+		</div>
+	)}
 </div>
+
+<script>
+	function setupStreamingDropdowns() {
+		const triggers = document.querySelectorAll('.streaming-options-toggle:not([data-initialized])');
+		
+		triggers.forEach(trigger => {
+			trigger.setAttribute('data-initialized', 'true');
+			const menu = trigger.nextElementSibling;
+			if (!menu) return;
+
+			trigger.addEventListener('click', (e) => {
+				e.stopPropagation();
+				const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+				
+				// Close all other menus
+				document.querySelectorAll('.streaming-options-toggle').forEach(t => {
+					if (t !== trigger) {
+						t.setAttribute('aria-expanded', 'false');
+						const m = t.nextElementSibling;
+						if (m) {
+							m.classList.add('opacity-0', 'invisible', 'scale-95');
+							m.classList.remove('opacity-100', 'visible', 'scale-100');
+						}
+					}
+				});
+
+				trigger.setAttribute('aria-expanded', (!isExpanded).toString());
+				
+				if (!isExpanded) {
+					menu.classList.remove('opacity-0', 'invisible', 'scale-95');
+					menu.classList.add('opacity-100', 'visible', 'scale-100');
+				} else {
+					menu.classList.add('opacity-0', 'invisible', 'scale-95');
+					menu.classList.remove('opacity-100', 'visible', 'scale-100');
+				}
+			});
+		});
+
+		document.removeEventListener('click', closeAllStreamingMenus);
+		document.addEventListener('click', closeAllStreamingMenus);
+	}
+
+	function closeAllStreamingMenus(e: Event) {
+		const triggers = document.querySelectorAll('.streaming-options-toggle[aria-expanded="true"]');
+		triggers.forEach(trigger => {
+			const menu = trigger.nextElementSibling;
+			if (menu && !trigger.contains(e.target as Node) && !menu.contains(e.target as Node)) {
+				trigger.setAttribute('aria-expanded', 'false');
+				menu.classList.add('opacity-0', 'invisible', 'scale-95');
+				menu.classList.remove('opacity-100', 'visible', 'scale-100');
+			}
+		});
+	}
+
+	setupStreamingDropdowns();
+	document.addEventListener('astro:page-load', setupStreamingDropdowns);
+</script>

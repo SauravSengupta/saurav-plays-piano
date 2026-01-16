@@ -60,7 +60,16 @@ const releases = defineCollection({
             title: z.string(),
             image: image(),
             releaseDate: z.coerce.date(),
-            links: z.record(z.string().url().or(z.literal('#'))).optional()
+            links: z.union([
+                z.record(z.string().url().or(z.literal('#'))),
+                z.array(
+                    z.object({
+                        platform: z.enum(['spotify', 'apple-music', 'youtube-music', 'amazon-music', 'other']),
+                        href: z.string().url().or(z.literal('#')),
+                        label: z.string().optional()
+                    })
+                )
+            ]).optional()
         })
 });
 

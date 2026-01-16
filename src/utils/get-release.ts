@@ -25,25 +25,43 @@ export async function getReleaseLinks(releaseId: string): Promise<StreamingLink[
         return [];
     }
 
-    // Extract only the main platforms
-    const links: StreamingLink[] = [];
-
-    for (const platform of mainPlatforms) {
-        const href = release.data.links[platform] || '#';
-        // Convert platform name to kebab-case for the platform key
-        const platformKey = platform.toLowerCase().replace(/\s+/g, '-') as
-            | 'spotify'
-            | 'apple-music'
-            | 'youtube-music'
-            | 'amazon-music';
-        links.push({ platform: platformKey, href });
+    // Handle new array format from content collection
+    if (Array.isArray(release.data.links)) {
+        return release.data.links.map((link: any) => ({
+            platform: link.platform,
+            href: link.href,
+            label: link.label
+        }));
     }
 
-    // Add "other" link pointing to the release page
-    links.push({
-        platform: 'other',
-        href: `/releases/${releaseId}`
-    });
+    // Extract only the main platforms
+    const links: StreamingLink[] = [];
+    const linkData = release.data.links as Record<string, string>;
+
+    // 1. Add Main Platforms
+    for (const platform of mainPlatforms) {
+        if (linkData[platform]) {
+            const href = linkData[platform];
+            // Convert platform name to kebab-case for the platform key
+            const platformKey = platform.toLowerCase().replace(/\s+/g, '-') as
+                | 'spotify'
+                | 'apple-music'
+                | 'youtube-music'
+                | 'amazon-music';
+            links.push({ platform: platformKey, href });
+        }
+    }
+
+    // 2. Add Other Platforms (anything not in mainPlatforms)
+    for (const [key, href] of Object.entries(linkData)) {
+        if (!mainPlatforms.includes(key)) {
+            links.push({
+                platform: 'other',
+                href: href,
+                label: key // Use the key (e.g., "Tidal") as the label
+            });
+        }
+    }
 
     return links;
 }
@@ -54,6 +72,13 @@ export async function getAllReleaseLinks(releaseId: string): Promise<Array<{ nam
 
     if (!release || !release.data.links) {
         return [];
+    }
+
+    if (Array.isArray(release.data.links)) {
+        return release.data.links.map((link: any) => ({
+            name: link.label || link.platform,
+            href: link.href
+        }));
     }
 
     return Object.entries(release.data.links).map(([name, href]) => ({
