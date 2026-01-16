@@ -63,7 +63,6 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        title: 'For the quiet moments',
         text: "Minimalist piano compositions inspired by the Pacific Northwest.",
         image: {
             src: hero,

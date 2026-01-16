@@ -6,15 +6,12 @@ import CustomImage from './CustomImage.astro';
 
 type Props = HeroProps;
 
-const { title, image, text, actions } = Astro.props;
+const { image, text, actions } = Astro.props;
 ---
 
 {
-    (title || image?.src || text || (actions && actions.length > 0)) && (
+    (image?.src || text || (actions && actions.length > 0)) && (
         <section class="mb-16 flex w-full flex-col gap-8 sm:mb-24">
-            {/* Updated to text-3xl / text-5xl and font-light to match PageLayout */ }
-            {title && <h1 class="font-serif text-3xl font-light leading-tight sm:text-5xl sm:leading-tight text-main">{title}</h1>}
-                        
             {image?.src && (
                 <figure class="relative w-full rounded-lg shadow-xl overflow-hidden bg-white dark:bg-muted">
                     <CustomImage

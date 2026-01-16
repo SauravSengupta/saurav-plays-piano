@@ -18,6 +18,7 @@ const featuredTracks = tracks.filter(({ data }) => data.isFeatured);
 ---
 
 <BaseLayout description={siteConfig.description}>
+    <h1 class="mb-8 font-serif text-3xl font-light leading-tight sm:text-5xl sm:leading-tight text-main">For the quiet moments</h1>
     {siteConfig.homeHeroType === 'releaseHero' ? (
         <ReleaseHero {...siteConfig.releaseHero} />
     ) : (
