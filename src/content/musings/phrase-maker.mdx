@@ -1,0 +1,80 @@
+---
+title: "Building Phrase Maker: How I Spent Four Days Teaching My Computer Music Theory"
+description: "How hard can it be to get a computer to make music?"
+publishDate: 2026-01-24
+isFeatured: true
+---
+
+import { Image } from 'astro:assets';
+import phraseMakerUI from '../../assets/images/phrase-maker-ui.png';
+
+It started with a simple, slightly lazy thought one weekend: *"Can I write a script to noodle on the piano for me?"*
+
+I've recently got into composing ambient piano music, and that introduced me to [generative music](https://en.wikipedia.org/wiki/Generative_music). Not AI-generated music—there's plenty of that to go around—but using code and math to generate music in real time. I wanted something that could sketch out melodic lines that I could use as a background for my actual piano playing.
+
+I tried some Reaper plugins that could generate notes based on chords but didn't like any of them, so I decided to try and write my own. I've been coding and playing piano for 30+ years; how hard could it be, right? I had the perfect set of skills needed to pull this off.
+
+Well, it turns out, this is really hard. What followed was a deep dive into the logic of generative MIDI, probability curves, and a lot of trial and error. It was also a journey into realizing the limitations of "vibe coding."
+
+Here is the journey of **Phrase Maker**, from a basic randomizer to a chord-aware musical sketchpad.
+
+---
+
+### Stage 1: The "technically correct" phase
+
+The first version was pretty simple. It knew some basic scales and chords, and randomly decided on the next note to play while trying to prioritize chord tones. It generated notes, and technically, they were the *correct* notes.
+
+But musically? It was rough. Because the engine had no concept of phrasing, it just played notes in a vacuum. It was strictly adhering to the rules of C Major, yet somehow managed to sound completely unmusical. Rests felt random and abrupt. I had a script that made phrases, but they certainly weren't music.
+
+### Stage 2: The Architecture Pivot
+
+My first realization was that trying to decide the next note to play based on a complex set of probabilities wasn't going to work. Especially when I also wanted constraints like "don't jump too many notes" or "stay within these two octaves." For example, the first version of the plugin would climb its way up to the top C and then get stuck there. It was actually really funny to hear it playing.
+
+I realized that I needed to plan out complete musical phrases, not decide on one note at a time. (I guess that's what I subconsciously do as a musician as well, even though I don't realize it).
+
+I rewrote the architecture to separate **Phrase Generation** from **Playback**. Now, the engine would pre-build the entire melodic arc before the first note triggered. And when I say "I rewrote the architecture," I mean "I typed instructions into the VSCode chat window and told the AI what I wanted it to do."
+
+I also realized that staying on one chord gets boring fast. I added the **Progression Sequencer**. Now, the engine wasn't just noodling on a chord; it was able to navigate a `I - vi - ii - V` progression and create phrases that actually matched the chords. I weighted Chord Tones (Root, 3rd, 5th) higher than generic scale tones. The commit message that night: *"Chord aware, not sounding great."*
+
+### Stage 3: Taming the Randomness
+
+The notes were right, but the movement was robotic. I wanted to get the phrases flowing better. The AI came up with the idea of a **Two-Phase Generation Engine**:
+
+1. **Exploration:** The phrase starts by wandering away from the root, exploring the scale.
+2. **Resolution:** As the phrase ends, the engine actively calculates a path to land on a target note that fits the chord in the measure where the phrase ends.
+
+This was the first hint of decent voice leading, especially when a phrase started in one chord and ended in another. I started adding more rules to the phrase generation logic:
+
+* **Jump Limiting:** No jarring leaps larger than 7 semitones.
+* **Recency Penalty:** If you just played a C#, don't play it again immediately.
+* **Consecutive Skip Limits:** Prevents the melody from sounding like a mindless arpeggio.
+
+### Stage 4: Eye Candy and More Musicality
+
+Finally, I added the polish.
+
+<Image src={phraseMakerUI} alt="Phrase Maker Screenshot" width={495} height={731} class="full-height" style="max-width: 400px;"/>
+
+OK, it's not really polished.
+
+* **Real-time Piano Roll Visualizer:** This lets me see the upcoming phrases before they happen.
+* **Speed Multiplier (0.5x to 8x):** Scales phrase playback independent of project tempo.
+* **Downbeat Snapping:** Phrases now try to resolve on strong beats, so the generator actually locks into the groove.
+
+I'm nowhere close to being done, but this now feels ready to share and get feedback.
+
+---
+
+### What I Learned
+
+**Generative music still needs to sound like music.** Weighting systems and probability curves are just tools. The goal is always the same: **Does it sound intentional?** With each version, it's getting slightly better.
+
+**Vibe coding is hard if you don't know coding.** The first several versions were completely generated by AI; I didn't really look at the code it produced. When I eventually looked under the hood, I realized the AI had created a structural mess. I had to step in and explicitly dictate the architecture.
+
+For example, when I told it to change the prediction model, it wrote code that generated notes in a sequence but decided on timing (8th notes, rests) *while* it was playing. It was impossible to create coherent phrases until I forced all the generation to happen in one place.
+
+### The Code
+
+**Phrase Maker** is open-source under the MIT License. You can grab it via ReaPack or check the source on [GitHub](https://github.com/SauravSengupta/saurav-plays-piano-jsfx).
+
+Does it still sound like a computer? Yes, most of the time. But every now and then it comes up with something that makes me smile. And as a sketchpad, a collaborator, and a source of happy accidents? It's ready to play.

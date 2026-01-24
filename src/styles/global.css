@@ -90,6 +90,11 @@ html {
         object-fit: cover;
         object-position: center;
     }
+
+    .prose img.full-height {
+        max-height: none;
+        object-fit: contain;
+    }
     
     .prose > p:first-of-type img {
         @apply mt-0;
