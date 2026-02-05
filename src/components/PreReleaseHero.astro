@@ -1,0 +1,65 @@
+---
+import { getPreReleaseData } from '../utils/get-pre-release';
+import CustomImage from './CustomImage.astro';
+
+type Props = {
+    preReleaseId?: string;
+};
+
+const { preReleaseId } = Astro.props;
+
+let title: string | undefined;
+let image: { src: ImageMetadata | string; alt?: string } | undefined;
+let releaseDateText: string | undefined;
+let preSaveUrl: string | undefined;
+let ctaText: string = 'Pre-save Now';
+
+if (preReleaseId) {
+    const preReleaseData = await getPreReleaseData(preReleaseId);
+    if (preReleaseData) {
+        title = preReleaseData.title;
+        image = preReleaseData.image;
+        releaseDateText = preReleaseData.releaseDateText;
+        preSaveUrl = preReleaseData.preSaveUrl;
+        if (preReleaseData.ctaText) {
+            ctaText = preReleaseData.ctaText;
+        }
+    }
+}
+---
+
+<section class="mb-16 flex w-full flex-col gap-8 items-center sm:mb-24">
+    {image?.src && (
+        <figure class="relative w-full max-w-xs aspect-square rounded-lg shadow-xl overflow-hidden bg-white dark:bg-muted">
+            <CustomImage
+                class="w-full h-full object-cover"
+                {...image}
+                widths={[300, 400]}
+                sizes="(min-width: 400px) 400px, calc(100vw - 32px)"
+                fetchpriority="high"
+                loading="eager"
+            />
+        </figure>
+    )}
+
+    <div class="flex flex-col items-center gap-4 text-center">
+        {title && (
+            <h2 class="font-serif text-2xl font-light text-main tracking-tight sm:text-3xl">{title}</h2>
+        )}
+
+        {releaseDateText && (
+            <p class="text-sm uppercase tracking-[0.2em] text-main/60">{releaseDateText}</p>
+        )}
+    </div>
+
+    {preSaveUrl && (
+        <a
+            href={preSaveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-6 py-2 font-serif leading-tight text-main border border-current rounded-full transition-colors opacity-80 hover:opacity-100"
+        >
+            {ctaText}
+        </a>
+    )}
+</section>

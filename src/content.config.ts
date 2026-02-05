@@ -75,4 +75,16 @@ const releases = defineCollection({
         })
 });
 
-export const collections = { musings, pages, music, releases };
+const preReleases = defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/pre-releases' }),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            image: image(),
+            releaseDateText: z.string(),
+            preSaveUrl: z.string().url(),
+            ctaText: z.string().optional()
+        })
+});
+
+export const collections = { musings, pages, music, releases, 'pre-releases': preReleases };

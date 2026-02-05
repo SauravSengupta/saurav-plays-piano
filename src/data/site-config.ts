@@ -2,7 +2,7 @@ import avatar from '../assets/images/avatar.jpg';
 import hero from '../assets/images/hero.jpg';
 import logo from '../assets/images/logo.svg';
 import mistCover from '../assets/images/mist-and-mushrooms-cover.jpg';
-import vibeCode from '../assets/images/vibe-code.jpg';
+import phraseMakerUi from '../assets/images/phrase-maker-ui.png';
 import type { SiteConfig } from '../types';
 
 const siteConfig: SiteConfig = {
@@ -72,21 +72,24 @@ const siteConfig: SiteConfig = {
             {
                 text: 'Mist & Mushrooms',
                 href: '/music/mist-and-mushrooms',
-                label: 'Out January 16 • Pre-save Now',
+                label: 'Released January 16 • Listen Now',
                 image: mistCover.src
             },
             {
-                text: 'Premature Optimization: Building the Perfect Site for Zero Listeners',
-                href: '/musings/premature-optimization',
+                text: 'Phrase Maker: Teaching My Computer Music Theory',
+                href: '/musings/phrase-maker',
                 label: 'Read Latest Post',
-                image: vibeCode.src
+                image: phraseMakerUi.src
             }
         ]
     },
-    // Set to 'releaseHero' to show release hero instead of regular hero
-    homeHeroType: 'releaseHero' as const,
+    // Set to 'releaseHero' or 'preReleaseHero' to show release/pre-release hero instead of regular hero
+    homeHeroType: 'preReleaseHero' as const,
     releaseHero: {
         releaseId: 'mist-and-mushrooms' // Image and links are fetched from releases collection
+    },
+    preReleaseHero: {
+        preReleaseId: 'remembering-the-way-home' // Image and data are fetched from pre-releases collection
     },
     subscribe: {
         enabled: true,

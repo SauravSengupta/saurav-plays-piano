@@ -27,6 +27,10 @@ export type ReleaseHero = {
     releaseId?: string;
 };
 
+export type PreReleaseHero = {
+    preReleaseId?: string;
+};
+
 export type SubscribeForm = {
     action: string;
     emailFieldName?: string;
@@ -53,9 +57,9 @@ export type SiteConfig = {
     socialLinks?: Link[];
     hero?: Hero;
     releaseHero?: ReleaseHero;
-    homeHeroType?: 'hero' | 'releaseHero';
+    preReleaseHero?: PreReleaseHero;
+    homeHeroType?: 'hero' | 'releaseHero' | 'preReleaseHero';
     subscribe?: Subscribe;
     postsPerPage?: number;
     tracksPerPage?: number;
-    avatar?: ImageMetadata;
 };
