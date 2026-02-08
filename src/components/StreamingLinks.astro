@@ -73,7 +73,7 @@ const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform
 						href={link.href}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="block px-4 py-3 text-sm text-center transition-colors !no-underline !text-main/80 hover:!text-main hover:bg-black/5 dark:hover:bg-white/10"
+						class="block px-4 py-3 text-sm text-center transition-colors text-main/80 hover:text-main hover:bg-black/5 dark:hover:bg-white/10"
 					>
 						{link.label || platformLabels[link.platform] || 'Other'}
 					</a>

@@ -34,7 +34,7 @@ const youtubeVideoId = getYouTubeVideoId(youtubeUrl);
 	</div>
 ) : image ? (
 	<CustomImage
-		class="w-full h-auto rounded-lg shadow-md my-12 opacity-90"
+		class="w-full max-w-sm mx-auto h-auto rounded-lg shadow-md my-12 opacity-90 full-height"
 		{...image}
 		widths={[400, 600, 800]}
 		sizes="(min-width: 800px) 800px, 100vw"

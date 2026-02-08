@@ -53,7 +53,7 @@ html {
         --tw-prose-td-borders: var(--border-color-main);
     }
 
-    .prose a {
+    .prose :where(p, li, td, th, dd, blockquote, figcaption) a {
         /* 1. decoration-auto/solid: Removes the dash.
         2. underline-offset-4: Pushes the line down for a cleaner read.
         3. opacity/color transition: Makes it feel interactive but subtle.
