@@ -13,7 +13,7 @@ links:
   - platform: amazon-music
     href: '#'
   - platform: bandcamp
-    href: '#'
+    href: 'https://sauravplayspiano.bandcamp.com/track/remembering-the-way-home'
   - platform: other
     label: Tidal
     href: '#'

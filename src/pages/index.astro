@@ -15,7 +15,7 @@ const posts = (await getCollection('musings')).sort(sortItemsByDateDesc);
 const featuredPosts = posts.filter(({ data }) => data.isFeatured);
 
 const tracks = (await getCollection('music')).sort(sortItemsByDateDesc);
-const featuredTracks = tracks.filter(({ data }) => data.isFeatured);
+const featuredTracks = tracks.filter(({ data }) => data.showInList);
 ---
 
 <BaseLayout description={siteConfig.description}>

@@ -46,11 +46,10 @@ const music = defineCollection({
             title: z.string(),
             description: z.string().optional(),
             publishDate: z.coerce.date(),
-            isFeatured: z.boolean().default(false),
+            showInList: z.boolean().default(false),
             seo: seoSchema(image).optional(),
             badge: z.string().optional(),
-            actionText: z.string().optional(),
-            youtubeUrl: z.string().url().optional()
+            actionText: z.string().optional()
         })
 });
 

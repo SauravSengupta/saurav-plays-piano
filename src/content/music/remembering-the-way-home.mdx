@@ -2,22 +2,23 @@
 title: Remembering the Way Home
 description: A song about the feeling of returning home after a long time away.
 publishDate: 2026-02-20
-badge: "Releasing February 20"
-actionText: "Pre-save Now"
-isFeatured: true
+badge: "Released February 20"
+actionText: "Listen Now"
+showInList: true
 seo:
   image:
     src: '../../assets/images/remembering-the-way-home-cover.png'
     alt: Remembering the Way Home cover art
 ---
 
+import ReleaseStreamingLinks from '../../components/ReleaseStreamingLinks.astro';
 import TrackMedia from '../../components/TrackMedia.astro';
-import Button from '../../components/Button.astro';
-import coverImage from '../../assets/images/remembering-the-way-home-cover.png';
 
-<TrackMedia image={{ src: coverImage }} alt="Remembering the Way Home" />
+<TrackMedia releaseId="remembering-the-way-home" alt="Remembering the Way Home" />
 
-<Button href="https://ffm.to/rememberingthewayhome">Pre-save Now</Button>
+### Listen Now
+
+<ReleaseStreamingLinks releaseId="remembering-the-way-home" />
 
 ## The Story
 

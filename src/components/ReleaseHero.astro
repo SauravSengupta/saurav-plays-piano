@@ -21,6 +21,7 @@ const { image: propImage, links: propLinks, releaseId } = Astro.props;
 let image = propImage;
 let links = propLinks || [];
 let youtubeUrl: string | undefined;
+let title: string | undefined;
 
 if (releaseId) {
 	const releaseData = await getReleaseData(releaseId);
@@ -28,8 +29,11 @@ if (releaseId) {
 		image = releaseData.image;
 		links = await getReleaseLinks(releaseId);
 		youtubeUrl = releaseData.youtubeUrl;
+		title = releaseData.title;
 	}
 }
+
+const articleUrl = releaseId ? `/music/${releaseId}` : undefined;
 
 // Extract YouTube video ID from URL
 function getYouTubeVideoId(url: string | undefined): string | null {
@@ -43,9 +47,17 @@ const youtubeVideoId = getYouTubeVideoId(youtubeUrl);
 const MAIN_PLATFORMS = ['spotify', 'apple-music', 'youtube-music', 'amazon-music', 'bandcamp'];
 const mainLinks = links.filter((link) => MAIN_PLATFORMS.includes(link.platform));
 const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform));
+const validOtherLinks = otherLinks.filter((link) => link.href !== '#');
 ---
 
 <section class="mb-16 flex w-full flex-col gap-12 items-center sm:mb-24">
+    {/* Title */}
+    {title && (
+        <h2 class="font-serif text-3xl sm:text-4xl font-light text-main tracking-tight text-center">
+            {articleUrl ? <a href={articleUrl} class="hover:underline underline-offset-4">{title}</a> : title}
+        </h2>
+    )}
+
     {/* YouTube Embed or Image */}
     {youtubeVideoId ? (
         <div class="relative w-full max-w-2xl aspect-video rounded-lg shadow-xl overflow-hidden bg-black">
@@ -59,7 +71,7 @@ const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform
                 allowfullscreen
             ></iframe>
         </div>
-    ) : (
+    ) : image ? (
         <figure class="relative w-full max-w-xs aspect-square rounded-lg shadow-xl overflow-hidden bg-white dark:bg-muted">
             <CustomImage
                 class="w-full h-full object-cover"
@@ -70,7 +82,7 @@ const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform
                 loading="eager"
             />
         </figure>
-    )}
+    ) : null}
 
     {/* Listen Now Section */}
     {links && links.length > 0 && (
@@ -104,10 +116,11 @@ const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform
                     <div class="relative">
                         <button
                             type="button"
-                            class="other-options-toggle inline-flex items-center justify-center p-3 sm:p-4 rounded-full bg-muted/40 backdrop-blur-sm border border-main/30 hover:border-main hover:bg-muted/60 transition-all duration-300 group text-main hover:text-main cursor-pointer"
+                            class={`${validOtherLinks.length > 0 ? 'other-options-toggle hover:border-main hover:bg-muted/60 hover:text-main cursor-pointer' : 'cursor-not-allowed opacity-40'} inline-flex items-center justify-center p-3 sm:p-4 rounded-full bg-muted/40 backdrop-blur-sm border border-main/30 transition-all duration-300 group text-main`}
                             aria-label="More options"
                             aria-expanded="false"
-                            aria-haspopup="true"
+                            aria-haspopup={validOtherLinks.length > 0 ? "true" : undefined}
+                            disabled={validOtherLinks.length === 0}
                         >
                             {platformIcons['other'] ? (
                                 <svg class="w-6 h-6 sm:w-7 sm:h-7 fill-current" viewBox="0 0 16 16" set:html={platformIcons['other']} />
@@ -116,10 +129,11 @@ const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform
                             )}
                         </button>
 
+                        {validOtherLinks.length > 0 && (
                         <div
                             class="other-options-menu absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 py-2 bg-[#f0f4f1]/95 dark:bg-[#0a120b]/95 backdrop-blur-md rounded-xl shadow-xl border border-main/10 opacity-0 invisible transition-all duration-200 transform origin-top scale-95 z-50"
                         >
-                            {otherLinks.filter((link) => link.href !== '#').map((link) => (
+                            {validOtherLinks.map((link) => (
                                 <a
                                     href={link.href}
                                     target="_blank"
@@ -130,9 +144,16 @@ const otherLinks = links.filter((link) => !MAIN_PLATFORMS.includes(link.platform
                                 </a>
                             ))}
                         </div>
+                        )}
                     </div>
                 )}
             </div>
+
+            {articleUrl && (
+                <a href={articleUrl} class="text-sm text-main hover:opacity-70 transition-opacity">
+                    About this song →
+                </a>
+            )}
         </div>
     )}
 </section>
