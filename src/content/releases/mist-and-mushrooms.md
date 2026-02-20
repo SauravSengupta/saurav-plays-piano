@@ -7,7 +7,7 @@ links:
   - platform: spotify
     href: 'https://open.spotify.com/track/1KN88LFdsIacXPTHEQolIq'
   - platform: apple-music
-    href: 'https://geo.music.apple.com/us/album/_/1864676212?i=1864676396&mt=1&app=music&ls=1'
+    href: 'https://music.apple.com/us/album/mist-mushrooms-single/1864676212'
   - platform: youtube-music
     href: 'https://music.youtube.com/watch?v=qw-mxN5pqAE'
   - platform: amazon-music
