@@ -14,13 +14,8 @@ const { showHeader = true, ...head } = Astro.props;
 <html lang="en" class="wrap-break-words antialiased">
     <head>
         <BaseHead {...head} />
-        <script>
-            if (localStorage.theme === 'dark') {
-                document.documentElement.classList.add('dark');
-            }
-        </script>
-        <ClientRouter />
         <script is:inline src="/theme-toggle.js"></script>
+        <ClientRouter />
     </head>
     
     <body class="bg-main text-main selection:bg-white selection:text-black min-h-screen relative">

@@ -6,7 +6,9 @@ type Props = HTMLAttributes<'a'>;
 const { href, class: className, ...props } = Astro.props;
 
 const { pathname } = Astro.url;
-const isActive = href === pathname || href === pathname.replace(/\/$/, '');
+const normalizedPath = pathname.replace(/\/$/, '');
+const normalizedHref = (href ?? '').replace(/\/$/, '');
+const isActive = normalizedPath === normalizedHref || (normalizedHref !== '' && normalizedPath.startsWith(normalizedHref + '/'));
 ---
 
 <a class:list={[className, { 'underline decoration-1 underline-offset-2': isActive }]} href={href} {...props}>

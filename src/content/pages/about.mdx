@@ -8,17 +8,19 @@ seo:
     src: '../../assets/images/about.jpg'
     alt: A photo of Saurav at the Oregon coast
 ---
+import { Image } from 'astro:assets';
 import aboutImage from '../../assets/images/about.jpg';
 
 {/* 1. Added 'leading-none' to parent to prevent line-height gaps */}
 <div class="relative mx-auto w-full max-w-sm rounded-xl overflow-hidden shadow-lg mb-8 group leading-none">
-  
-  {/* 2. Added '!m-0' to remove the default prose margins 
-      3. Added 'block' to remove the tiny bottom gap images usually have */}
-  <img 
-    src={aboutImage.src} 
-    alt="Saurav Plays Piano" 
-    class="w-full h-auto object-cover block !m-0" 
+
+  <Image
+    src={aboutImage}
+    alt="Saurav Plays Piano"
+    width={400}
+    height={400}
+    class="w-full h-auto object-cover block !m-0"
+    loading="eager"
   />
 
   {/* The Overlay */}

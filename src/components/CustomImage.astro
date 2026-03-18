@@ -21,6 +21,6 @@ const { src, alt = '', class: className, loading = 'lazy', fetchpriority, decodi
     typeof src === 'string' ? (
         <img class={className} src={src} alt={alt} loading={loading} decoding={decoding} />
     ) : (
-        <Image class={className} src={src} alt={alt} loading={loading} fetchpriority={fetchpriority} decoding={decoding} {...(rest as any)} />
+        <Image class={className} src={src} alt={alt} loading={loading} fetchpriority={fetchpriority} decoding={decoding} {...rest} />
     )
 }

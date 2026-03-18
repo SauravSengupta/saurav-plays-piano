@@ -1,5 +1,4 @@
 ---
-import { marked } from 'marked';
 import type { Hero as HeroProps } from '../types';
 import Button from './Button.astro';
 import CustomImage from './CustomImage.astro';
@@ -26,7 +25,7 @@ const { image, text, actions } = Astro.props;
                 </figure>
             )}
 
-            {text && <div class="prose sm:prose-lg max-w-none" set:html={marked.parse(text)} />}
+            {text && <p class="prose sm:prose-lg max-w-none">{text}</p>}
 
             {actions && actions.length > 0 && (
                 <div class="mt-6 flex flex-col gap-4 w-full sm:max-w-lg mx-auto">

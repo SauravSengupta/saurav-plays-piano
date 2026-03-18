@@ -1,5 +1,8 @@
 ---
-/* Removed SVG imports to switch to a text-based "Editorial" look */
+import type { Page } from 'astro';
+
+type Props = { page: Page<unknown>; class?: string };
+
 const { page, class: className } = Astro.props;
 ---
 

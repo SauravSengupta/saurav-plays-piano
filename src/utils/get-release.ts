@@ -3,9 +3,13 @@ import type { StreamingLink } from '../components/StreamingLinks.astro';
 
 const mainPlatforms = ['Spotify', 'Apple Music', 'YouTube Music', 'Amazon Music', 'Bandcamp'];
 
-export async function getReleaseData(releaseId: string) {
+async function findRelease(releaseId: string) {
     const releases = await getCollection('releases');
-    const release = releases.find((r) => r.id === releaseId);
+    return releases.find((r) => r.id === releaseId) ?? null;
+}
+
+export async function getReleaseData(releaseId: string) {
+    const release = await findRelease(releaseId);
 
     if (!release) {
         return null;
@@ -18,9 +22,9 @@ export async function getReleaseData(releaseId: string) {
         youtubeUrl: release.data.youtubeUrl
     };
 }
+
 export async function getReleaseLinks(releaseId: string): Promise<StreamingLink[]> {
-    const releases = await getCollection('releases');
-    const release = releases.find((r) => r.id === releaseId);
+    const release = await findRelease(releaseId);
 
     if (!release || !release.data.links) {
         return [];
@@ -69,8 +73,7 @@ export async function getReleaseLinks(releaseId: string): Promise<StreamingLink[
 }
 
 export async function getAllReleaseLinks(releaseId: string): Promise<Array<{ name: string; href: string }>> {
-    const releases = await getCollection('releases');
-    const release = releases.find((r) => r.id === releaseId);
+    const release = await findRelease(releaseId);
 
     if (!release || !release.data.links) {
         return [];

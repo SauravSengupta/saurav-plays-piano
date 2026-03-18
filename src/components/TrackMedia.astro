@@ -1,5 +1,6 @@
 ---
 import CustomImage from './CustomImage.astro';
+import { getYouTubeVideoId } from '../utils/common-utils';
 import { getReleaseData } from '../utils/get-release';
 import type { ImageInput } from '../types';
 
@@ -14,14 +15,6 @@ const { releaseId, alt } = Astro.props;
 const releaseData = releaseId ? await getReleaseData(releaseId) : null;
 const youtubeUrl = Astro.props.youtubeUrl ?? releaseData?.youtubeUrl;
 const image = Astro.props.image ?? (releaseData?.image ? { src: releaseData.image } : undefined);
-
-// Extract YouTube video ID from URL
-function getYouTubeVideoId(url: string | undefined): string | null {
-	if (!url) return null;
-	const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
-	return match ? match[1] : null;
-}
-
 const youtubeVideoId = getYouTubeVideoId(youtubeUrl);
 ---
 

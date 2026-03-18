@@ -1,5 +1,6 @@
 ---
 import type { ImageInput } from '../types';
+import { getYouTubeVideoId } from '../utils/common-utils';
 import { getReleaseData, getReleaseLinks } from '../utils/get-release';
 import CustomImage from './CustomImage.astro';
 import StreamingLinks from './StreamingLinks.astro';
@@ -27,13 +28,6 @@ if (releaseId) {
 }
 
 const articleUrl = releaseId ? `/music/${releaseId}` : undefined;
-
-function getYouTubeVideoId(url: string | undefined): string | null {
-	if (!url) return null;
-	const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
-	return match ? match[1] : null;
-}
-
 const youtubeVideoId = getYouTubeVideoId(youtubeUrl);
 ---
 
