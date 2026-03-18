@@ -18,13 +18,15 @@ const { showHeader = true, ...head } = Astro.props;
         <ClientRouter />
     </head>
     
-    <body class="bg-main text-main selection:bg-white selection:text-black min-h-screen relative">
+    <body class="bg-main text-main selection:bg-[#1a2f1e]/20 selection:text-[#1a2f1e] dark:selection:bg-white/20 dark:selection:text-white min-h-screen relative">
         
-        <div class="fixed inset-0 -z-50">
+        <div class="fixed inset-0 -z-50" aria-hidden="true">
         <img
             src="/forest-cover.webp"
-            alt="Background"
+            alt=""
             class="absolute inset-0 h-full w-full object-cover opacity-50 dark:opacity-10"
+            loading="eager"
+            fetchpriority="low"
         />
         </div>
 

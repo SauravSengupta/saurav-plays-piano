@@ -6,44 +6,30 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="mx-auto w-full max-w-3xl pt-12 pb-10 sm:pt-24 sm:pb-14 border-t border-black/10 dark:border-white/10">
-    {/* UPDATED: text-main/60 makes the entire footer sit quietly in the background */}
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-sm text-main/60">
-        
-        {/* 1. Copyright */}
+    <div class="flex flex-col items-center justify-center gap-2 text-sm text-main/60">
         <p>
             &copy; {currentYear} {siteConfig.title}. All rights reserved.
         </p>
 
-        <span class="hidden sm:inline-block opacity-40">&bull;</span>
-
-        {/* 2. Credits (Unsplash) */}
-        <p>
-            Photography via <a href="https://unsplash.com" class="hover:text-main hover:underline transition-colors" target="_blank" rel="noopener noreferrer">Unsplash</a>
-        </p>
-        
-        <span class="hidden sm:inline-block opacity-40">&bull;</span>
-
-        {/* 3. Credits (Astro) */}
-        <p>
-            Built with <a href="https://astro.build" class="hover:text-main hover:underline transition-colors" target="_blank" rel="noopener noreferrer">Astro</a>
-        </p>
-
-        {/* 4. Navigation Links (Terms, Privacy) */}
-        {navLinks.length > 0 && (
-            <>
-                <span class="hidden sm:inline-block opacity-40">&bull;</span>
+        <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            <p>
+                Photography via <a href="https://unsplash.com" class="hover:text-main hover:underline transition-colors" target="_blank" rel="noopener noreferrer">Unsplash</a>
+            </p>
+            <p>
+                Built with <a href="https://astro.build" class="hover:text-main hover:underline transition-colors" target="_blank" rel="noopener noreferrer">Astro</a>
+            </p>
+            {navLinks.length > 0 && (
                 <nav aria-label="Footer navigation" class="flex gap-4">
                     {navLinks.map((link) => (
-                        <a 
-                            /* UPDATED: Removed hardcoded gray. Now transitions to full opacity on hover. */
-                            class="hover:text-main hover:underline transition-colors" 
+                        <a
+                            class="hover:text-main hover:underline transition-colors"
                             href={link.href}
                         >
                             {link.text}
                         </a>
                     ))}
                 </nav>
-            </>
-        )}
+            )}
+        </div>
     </div>
 </footer>
