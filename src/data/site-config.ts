@@ -84,12 +84,12 @@ const siteConfig: SiteConfig = {
         ]
     },
     // Set to 'releaseHero' or 'preReleaseHero' to show release/pre-release hero instead of regular hero
-    homeHeroType: 'releaseHero' as const,
+    homeHeroType: 'preReleaseHero' as const,
     releaseHero: {
         releaseId: 'remembering-the-way-home' // Image and links are fetched from releases collection
     },
     preReleaseHero: {
-        preReleaseId: 'remembering-the-way-home' // Image and data are fetched from pre-releases collection
+        preReleaseId: 'moonlight-reflections' // Image and data are fetched from pre-releases collection
     },
     subscribe: {
         enabled: true,
