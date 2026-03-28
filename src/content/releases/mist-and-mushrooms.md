@@ -11,12 +11,12 @@ links:
   - platform: youtube-music
     href: 'https://music.youtube.com/watch?v=qw-mxN5pqAE'
   - platform: amazon-music
-    href: 'https://music.amazon.com/albums/B0GCW4143S?trackAsin=B0GCVXS9M2'
+    href: 'https://music.amazon.com/albums/B0GCW4143S'
   - platform: bandcamp
     href: 'https://sauravplayspiano.bandcamp.com/track/mist-mushrooms'
   - platform: other
     label: Tidal
-    href: 'https://listen.tidal.com/track/485347956'
+    href: 'https://tidal.com/album/508144897'
   - platform: other
     label: Deezer
     href: '#'

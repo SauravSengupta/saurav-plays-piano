@@ -11,12 +11,12 @@ links:
   - platform: youtube-music
     href: 'https://music.youtube.com/watch?v=G_4kmkxoBUo'
   - platform: amazon-music
-    href: 'https://music.amazon.com/albums/B0GKYT3K8G?trackAsin=B0GKYBBDFZ'
+    href: 'https://music.amazon.com/albums/B0GKYT3K8G'
   - platform: bandcamp
     href: 'https://sauravplayspiano.bandcamp.com/track/remembering-the-way-home'
   - platform: other
     label: Tidal
-    href: 'https://listen.tidal.com/track/495000857'
+    href: 'https://tidal.com/album/508134447'
   - platform: other
     label: Deezer
     href: '#'
