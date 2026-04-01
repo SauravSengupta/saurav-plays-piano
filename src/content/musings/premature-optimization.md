@@ -1,6 +1,6 @@
 ---
 title: "Premature Optimization: Building the Perfect Site for Zero Listeners"
-description: "I'm a backend engineer. I don't do CSS. So I hired an AI to help me build this site in 48 hours to avoid working on my music."
+excerpt: "I'm a backend engineer. I don't do CSS. So I hired an AI to help me build this site in 48 hours to avoid working on my music."
 publishDate: 2026-01-13
 isFeatured: true
 seo:

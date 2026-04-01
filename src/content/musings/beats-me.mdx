@@ -1,0 +1,98 @@
+---
+title: "beats.me: Blending My Two Oldest Hobbies"
+excerpt: "I've been coding for 30 years and playing piano for longer. It took an AI to get them in the same room."
+publishDate: 2026-03-31
+isFeatured: true
+seo:
+  description: "I've been coding for 30 years and playing piano for longer. It took an AI to get them in the same room."
+  image:
+    src: '../../assets/images/beats-me-screenshot.png'
+    alt: beats.me step sequencer screenshot
+---
+
+import { Image } from 'astro:assets';
+import beatsScreenshot from '../../assets/images/beats-me-screenshot.png';
+
+I've been writing code for 30 years and playing piano for longer. You'd think those two hobbies would have found each other by now, but they've mostly stayed in their own lanes - until a couple of weeks ago, when I sat down and built [**beats.me**](https://play.sauravplayspiano.com), a browser-based music toy where you place colored tiles on a grid and it makes you sound like you know what you're doing.
+
+(Whether "vibe coding" counts as programming is debatable. I'm counting it.)
+
+<Image src={beatsScreenshot} alt="beats.me screenshot" width={800} class="full-height" />
+
+The idea was simple: what if non-musicians could place a few tiles on a grid, and the app secretly made everything sound good? Not a DAW, not a loop station - a toy where the system handles the music theory and you just decide the rhythm. You place 10 cells and hear a 65-second song with an intro, a build-up, a drop, and an ending. The ratio of effort to output is the whole point.
+
+---
+
+### Starting with "What Makes This Cool?"
+
+Before writing any code, I spent time in a brainstorming session with an AI, working through what the product actually was. We looked at existing tools - Chrome Music Lab, Incredibox, Sprunki - and identified the gap. Chrome Music Lab gives you a full chromatic scale and expects you to make harmonic decisions. Incredibox assembles pre-recorded loops. I wanted something in between: a tool where minimal input produces disproportionately good output.
+
+The AI asked good forcing questions. *"What makes someone share a link to this?"* That question shaped everything. The answer was: the moment someone hears a song that sounds way more sophisticated than what they clicked. That's the thing worth sharing. Which meant share-via-URL had to be built in from day one, and the sound engine had to be impressive enough to justify it.
+
+The AI also caught me doing the thing I always do: describing a simple toy and then immediately listing features for a full DAW. It noted the gap between my "low effort, will abandon if it doesn't stick" framing and my actual excitement about arpeggiators, harmony generators, and pattern chaining. Fair.
+
+### The Grid Is Not the Product
+
+The grid was easy. Four rows, sixteen columns, click to toggle. The interesting part was what happens after you click.
+
+Every row in beats.me is a compositional layer, not just a drum trigger. The bottom row (the Pulse) is literal - you place a kick, a kick plays, plus a bass note. But as you move up the rows, the engine gets more creative. the Groove adds snare hits with gated reverb and sometimes layers a stab chord on top. the Rhythm triggers hats and echoing synth stabs with dotted-eighth delay. And the Sparkle at the top is generative - one cell triggers a four-note arp cascade that rings out through delay tails. You place one tile and hear twelve notes.
+
+I think of it as a **causality gradient**. The bottom is "I placed it, it plays there." The top is "I placed it, and it launched something starting there." The user always feels in control because the output is anchored to where they clicked - it's just richer than expected.
+
+### Teaching It to Sound Like Music
+
+The first version sounded like a computer. Technically correct notes, technically correct timing, completely lifeless. This is the same problem I hit with my [Phrase Maker](/musings/phrase-maker) plugin - getting the right notes is easy; getting them to feel intentional is the actual challenge.
+
+The breakthrough was layering probabilistic behaviors on top of deterministic ones. The kick always plays when you place it. Always. But the bass note that accompanies it? 100% on the root, but on offbeat positions near another kick, the engine uses weighted probability to pick approach tones - maybe the fifth, maybe a step below, maybe the root again. It's seeded from the grid state, so the same pattern always produces the same result, but the *listener* doesn't know that. It sounds like voice leading. It sounds like someone made a decision.
+
+The sound design went through a similar evolution. The first version used canned 808 drum samples - functional, but generic. I replaced them with fully synthesized drums: a kick built from a pitch-swept sine wave, a snare with gated reverb (the Phil Collins sound that defines synthwave), hats from six detuned square wave oscillators. The pad went from a polite background wash to a five-voice detuned sawtooth with a wide filter sweep and slow stereo drift. Every parameter was something I could shape by ear - "make the kick tighter," "the pad needs to breathe slower," "the snare needs more body." It's the kind of tweaking I do in REAPER on my piano tracks, just applied to a synth engine instead of a mix.
+
+I also spent a lot of time getting the chord voicings right. The A-section uses Am-F-Dm-G - all natural minor, no tension, the loop just breathes. The B-section switches to C-F-Dm-E, and that E chord's G# is the emotional peak of the entire song. I knew I wanted that contrast before a single line of code was written. The AI handled the implementation - the scale-switching, the voicing tables, the chord-boundary-aware arp truncation - but the harmonic choices were mine. This is the part of the collaboration that worked best: I brought the musical taste, the AI wrote the code.
+
+### The Arrangement System
+
+The thing that transforms beats.me from "another web sequencer" into something worth sharing is the arrangement system. Your grid never changes, but the engine reveals it over time.
+
+It starts quiet - just the pad breathing over F and E chords, maybe a few sparse stabs from your placed cells. Then drums enter. Synth companions ramp up over four loops. The energy builds. Then everything drops out except a half-volume kick. Then the B-section hits with brighter chords and full intensity. Then it resolves back to Am, strips down to just the pad, and fades out.
+
+Sixteen loops, about 65 seconds. A complete song arc from a handful of colored tiles.
+
+The energy curve drives everything - at low energy, velocities are soft, delay feedback is minimal, the pad filter barely moves. At peak energy, everything opens up. The transition between those states is what makes it feel alive. It's not just "more instruments"; it's "more *everything*."
+
+### My Daughter Broke My Design
+
+The original design used color to encode behavior. Cyan cells did one thing, magenta did another, purple a third. It made sense to me - a musician who understands that different timbres serve different rhythmic functions.
+
+Then I handed it to my daughter.
+
+She didn't understand what the colors meant. She had to listen and think about which color did what to the beat. It required explanation, which for a music toy aimed at non-musicians, means it's wrong.
+
+But when I switched to the 16 sub-column grid - where each row has its own color and timing is encoded by *where* you place the tile - she got it immediately. She drew pictures with the colors. She laughed at the resulting beats. She played for much longer than before.
+
+The lesson was clear: **colors should represent identity (what), not behavior (how).** If someone needs to think about what a color means, the design has failed. Position communicates timing. Color communicates "this is my row." She validated a principle I should have known from the start.
+
+### The Moment It Clicked
+
+There's a specific moment I remember. I had the arrangement system working, the probabilistic bass companions firing, the arp cascading from row 0, the pad breathing with its LFO. I placed about eight cells - a few kicks, a couple of hats, one snare, and a single sparkle cell.
+
+I pressed play.
+
+The pad faded in over the intro. The stabs echoed through the delay. Then the drums entered and the bass started walking with approach tones that sounded like intentional voice leading. The arp cascaded through the chord changes. The energy built. The B-section hit with that bright C major chord and I actually sat up straighter.
+
+I *knew* it was all probability curves and weighted random selection. I wrote (well, directed the writing of) every line of code. But in that moment, it sounded like someone had composed it. The gap between the randomness of the engine and the intentionality of the output - that's the magic ratio working. That's what makes someone want to share a link.
+
+### What I Learned
+
+**Musical taste is the hardest thing to automate.** The code can implement any rule you describe, but knowing *which* rules to describe - that the A-section should feel settled, that the E chord's G# is where the drama lives, that the pad needs to breathe on a non-aligned LFO cycle so it doesn't feel metronomic - that's human judgment. The AI never pushed back on a musical decision. It implemented whatever I asked, beautifully. But it never would have asked for the E chord.
+
+**The product is the constraint, not the tool.** beats.me doesn't give users more options. It gives them fewer options that all sound good. The invisible harmonic constraints, the arrangement system that reveals their cells over time, the probabilistic companions that add richness they didn't ask for - all of it is the system secretly doing the hard part.
+
+**Non-musicians are the best testers.** My daughter, who has zero musical training, found the design flaw that I - with 30+ years of music theory - had missed. She couldn't articulate *why* the color-coded behaviors were confusing, but her behavior made it obvious. Watch people use it. Don't explain anything.
+
+---
+
+### Try It
+
+You can play with beats.me at [play.sauravplayspiano.com](https://play.sauravplayspiano.com). Place some tiles. Press play. Wait for the B-section.
+
+And if you make something you like, hit the share button - same grid, same song, every time.
