@@ -62,7 +62,7 @@ const releases = defineCollection({
             releaseDate: z.coerce.date(),
             youtubeUrl: z.string().url().optional(),
             links: z.union([
-                z.record(z.string().url().or(z.literal('#'))),
+                z.record(z.string(), z.string().url().or(z.literal('#'))),
                 z.array(
                     z.object({
                         platform: z.enum(['spotify', 'apple-music', 'youtube-music', 'amazon-music', 'bandcamp', 'other']),
