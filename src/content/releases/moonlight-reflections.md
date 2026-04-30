@@ -7,7 +7,7 @@ links:
   - platform: spotify
     href: 'https://open.spotify.com/track/7p3kW7PxneItptBvHJ0nVn'
   - platform: apple-music
-    href: 'https://music.apple.com/us/album/moonlight-reflections/1885273414'
+    href: 'https://music.apple.com/us/album/moonlight-reflections-single/1894682285'
   - platform: youtube-music
     href: 'https://music.youtube.com/watch?v=jsuyBcZaIvI'
   - platform: amazon-music

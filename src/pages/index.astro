@@ -12,10 +12,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { sortItemsByDateDesc } from '../utils/data-utils';
 
 const posts = (await getCollection('musings')).sort(sortItemsByDateDesc);
-const featuredPosts = posts.filter(({ data }) => data.isFeatured);
+const featuredPosts = posts.filter(({ data }) => data.isFeatured).slice(0, 3);
 
 const tracks = (await getCollection('music')).sort(sortItemsByDateDesc);
-const featuredTracks = tracks.filter(({ data }) => data.showInList);
+const featuredTracks = tracks.filter(({ data }) => data.showInList).slice(0, 3);
 ---
 
 <BaseLayout description={siteConfig.description}>

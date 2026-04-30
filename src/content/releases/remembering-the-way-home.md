@@ -7,7 +7,7 @@ links:
   - platform: spotify
     href: 'https://open.spotify.com/track/4AJh52xWug63KgKJTLG7z1'
   - platform: apple-music
-    href: 'https://music.apple.com/us/album/remembering-the-way-home-single/1873753786'
+    href: 'https://music.apple.com/us/album/remembering-the-way-home-single/1886201026'
   - platform: youtube-music
     href: 'https://music.youtube.com/watch?v=G_4kmkxoBUo'
   - platform: amazon-music
