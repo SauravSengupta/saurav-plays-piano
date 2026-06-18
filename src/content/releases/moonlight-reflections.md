@@ -16,7 +16,7 @@ links:
     href: 'https://sauravplayspiano.bandcamp.com/track/moonlight-reflections'
   - platform: other
     label: Tidal
-    href: 'https://tidal.com/album/507260363'
+    href: 'https://tidal.com/album/517336927'
   - platform: other
     label: Deezer
     href: '#'

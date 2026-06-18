@@ -16,7 +16,7 @@ links:
     href: 'https://sauravplayspiano.bandcamp.com/track/forgotten-melody'
   - platform: other
     label: Tidal
-    href: 'https://tidal.com/album/529528509'
+    href: 'https://tidal.com/album/529528508'
   - platform: other
     label: Deezer
     href: '#'
