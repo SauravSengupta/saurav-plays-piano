@@ -1,6 +1,6 @@
 ---
 title: Longing For The Open Sea
-image: ../../assets/images/longing-for-the-open-sea-cover.png
+image: ../../assets/images/covers/longing-for-the-open-sea-cover.png
 releaseDate: 2026-02-20
 youtubeUrl: 'https://www.youtube.com/watch?v=SP4E6asUtYg'
 links:

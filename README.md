@@ -91,7 +91,7 @@ actionText: "Listen Now"        # optional CTA label
 showInList: true                # show in the music index
 seo:
   image:
-    src: '../../assets/images/longing-for-the-open-sea-cover.png'
+    src: '../../assets/images/covers/longing-for-the-open-sea-cover.png'
     alt: Longing For The Open Sea cover art
 ---
 ```
@@ -101,7 +101,7 @@ seo:
 ```yaml
 ---
 title: Mist & Mushrooms
-image: ../../assets/images/mist-and-mushrooms-cover.jpg
+image: ../../assets/images/covers/mist-and-mushrooms-cover.jpg
 releaseDate: 2026-01-16
 youtubeUrl: https://www.youtube.com/watch?v=_jZoaN76BVk
 links:
@@ -118,7 +118,7 @@ links:
 ```yaml
 ---
 title: Longing For The Open Sea
-image: ../../assets/images/longing-for-the-open-sea-cover.png
+image: ../../assets/images/covers/longing-for-the-open-sea-cover.png
 releaseDateText: Coming April 24
 preSaveUrl: https://artists.landr.com/longing-for-the-open-sea
 ctaText: Pre-save            # optional, defaults to a sensible label

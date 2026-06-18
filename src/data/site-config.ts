@@ -1,7 +1,7 @@
 import avatar from '../assets/images/avatar.jpg';
+import mistCover from '../assets/images/covers/mist-and-mushrooms-cover.jpg';
 import hero from '../assets/images/hero.jpg';
 import logo from '../assets/images/logo.svg';
-import mistCover from '../assets/images/mist-and-mushrooms-cover.jpg';
 import phraseMakerUi from '../assets/images/phrase-maker-ui.png';
 import type { SiteConfig } from '../types';
 
@@ -86,7 +86,7 @@ const siteConfig: SiteConfig = {
     // Set to 'releaseHero' or 'preReleaseHero' to show release/pre-release hero instead of regular hero
     homeHeroType: 'releaseHero' as const,
     releaseHero: {
-        releaseId: 'longing-for-the-open-sea' // Image and links are fetched from releases collection
+        releaseId: 'forgotten-melody' // Image and links are fetched from releases collection
     },
     preReleaseHero: {
         preReleaseId: 'longing-for-the-open-sea' // Image and data are fetched from pre-releases collection

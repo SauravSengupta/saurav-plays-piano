@@ -1,6 +1,6 @@
 ---
 title: Moonlight Reflections
-image: ../../assets/images/moonlight-reflections-cover.png
+image: ../../assets/images/covers/moonlight-reflections-cover.png
 releaseDate: 2026-03-27
 youtubeUrl: 'https://www.youtube.com/watch?v=jsuyBcZaIvI'
 links:

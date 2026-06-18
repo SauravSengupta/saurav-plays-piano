@@ -1,6 +1,6 @@
 ---
 title: Remembering the Way Home
-image: ../../assets/images/remembering-the-way-home-cover.png
+image: ../../assets/images/covers/remembering-the-way-home-cover.png
 releaseDate: 2026-02-20
 youtubeUrl: 'https://www.youtube.com/watch?v=zxPLP6YXw6I'
 links:

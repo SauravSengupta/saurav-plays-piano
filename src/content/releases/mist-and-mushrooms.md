@@ -1,6 +1,6 @@
 ---
 title: Mist & Mushrooms
-image: ../../assets/images/mist-and-mushrooms-cover.jpg
+image: ../../assets/images/covers/mist-and-mushrooms-cover.jpg
 releaseDate: 2026-01-16
 youtubeUrl: https://www.youtube.com/watch?v=_jZoaN76BVk
 links:
